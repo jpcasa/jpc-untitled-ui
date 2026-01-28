@@ -1,0 +1,54 @@
+{
+	"header": {
+		"subtitle": "Design & Development",
+		"title": "Creative Process",
+		"description": "A really quick snapshot of what my creative/work process looks like. If you like what you are seeing, do not hesitate to reach out!"
+	},
+	"designSection": {
+		"title": "Human Centered Design",
+		"subtitle": "The Design Process",
+		"description": "I start by understanding the problem, then I research and ideate, then I prototype and test, and finally I iterate and improve. I also use a lot of creativity and design thinking to come up with solutions that are both functional and beautiful."
+	},
+	"designSteps": [
+		{
+			"title": "Empathize",
+			"description": "The first step of the design thinking process is empathy. As a human centered process, it is important to empathize with the user to really understand the problem they are facing.",
+			"icon": "heart"
+		},
+		{
+			"title": "Define",
+			"description": "After understanding what the problem is, you have to define it. It sounds easy, but it is the most difficult step. You have to be 100% crystal clear with what the problem is.",
+			"icon": "target"
+		},
+		{
+			"title": "Ideate",
+			"description": "Defining the problem lets us ideate a solution. Taking in account the empathy side, it is important to ideate a solution that best solves the problem the user is facing.",
+			"icon": "lightbulb"
+		},
+		{
+			"title": "Prototype",
+			"description": "A really important step before continuing to coding is to prototype. Apps like Figma, Invision, and Framer allow us to create high fidelity prototypes to test UX as well as UI.",
+			"icon": "layers"
+		},
+		{
+			"title": "Test",
+			"description": "After creating a high-fidelity prototype, you can start testing it out with real users or teammates. Testing gives us the feedback we need to improve problems, bugs, and more.",
+			"icon": "users"
+		},
+		{
+			"title": "Iterate",
+			"description": "You will not probably nail the prototype in the first run. Iterating the process and trying to tweak your design to make it as best as possible for the user is really important.",
+			"icon": "refresh"
+		}
+	],
+	"codeSection": {
+		"title": "Modern Tech Stack",
+		"subtitle": "The Development Process",
+		"description": "I use Vue 3, React, Vite.js, and Tailwind CSS to build fast and reliable applications. I also use Node.js, Python, and various databases for the backend. My workflow includes Git, CI/CD, and cloud deployments."
+	},
+	"appsSection": {
+		"title": "Productivity & Organization",
+		"subtitle": "Some of the apps I use everyday",
+		"description": "These are some of the apps that I use everyday for work, productivity, and organization. I use a whole bunch, but these are the ones I use the most."
+	}
+}

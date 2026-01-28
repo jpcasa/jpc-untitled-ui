@@ -1,0 +1,77 @@
+{
+	"categories": [
+		{
+			"name": "Design",
+			"color": "error",
+			"items": [
+				{ "name": "Figma", "level": 95 },
+				{ "name": "Adobe CC", "level": 85 },
+				{ "name": "UI/UX", "level": 90 },
+				{ "name": "Prototyping", "level": 92 },
+				{ "name": "Mockups", "level": 88 },
+				{ "name": "Branding", "level": 80 }
+			]
+		},
+		{
+			"name": "Frontend",
+			"color": "success",
+			"items": [
+				{ "name": "JavaScript", "level": 92 },
+				{ "name": "TypeScript", "level": 88 },
+				{ "name": "Vue", "level": 95 },
+				{ "name": "React", "level": 90 },
+				{ "name": "Vite", "level": 88 },
+				{ "name": "Tailwind", "level": 95 },
+				{ "name": "Next.js", "level": 82 },
+				{ "name": "Nuxt", "level": 90 }
+			]
+		},
+		{
+			"name": "Backend",
+			"color": "warning",
+			"items": [
+				{ "name": "Node.js", "level": 88 },
+				{ "name": "Python", "level": 75 },
+				{ "name": "Ruby", "level": 70 },
+				{ "name": "PostgreSQL", "level": 80 },
+				{ "name": "MongoDB", "level": 75 },
+				{ "name": "Postman", "level": 85 },
+				{ "name": "Elasticsearch", "level": 65 }
+			]
+		},
+		{
+			"name": "Dev Ops",
+			"color": "brand",
+			"items": [
+				{ "name": "AWS", "level": 75 },
+				{ "name": "Netlify", "level": 90 },
+				{ "name": "Render", "level": 85 },
+				{ "name": "Vercel", "level": 88 },
+				{ "name": "Git", "level": 92 },
+				{ "name": "CI/CD", "level": 80 }
+			]
+		},
+		{
+			"name": "AI Tools",
+			"color": "orange",
+			"items": [
+				{ "name": "Claude Code", "level": 95 },
+				{ "name": "Gemini", "level": 80 },
+				{ "name": "GPT", "level": 88 },
+				{ "name": "MCPs", "level": 75 }
+			]
+		},
+		{
+			"name": "Marketing",
+			"color": "blue",
+			"items": [
+				{ "name": "Facebook Ads", "level": 85 },
+				{ "name": "SEO", "level": 78 },
+				{ "name": "SEM", "level": 75 },
+				{ "name": "Pixels", "level": 82 },
+				{ "name": "Automation", "level": 80 },
+				{ "name": "Funnel Analysis", "level": 78 }
+			]
+		}
+	]
+}

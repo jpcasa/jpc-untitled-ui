@@ -1,0 +1,25 @@
+{
+	"title": "My Usual Apps",
+	"subtitle": "Some of the apps I use everyday",
+	"description": "These are some of the apps that I use everyday for work, personal, and hobbies.",
+	"apps": [
+		{ "name": "Figma", "icon": "/img/apps/app-1.webp" },
+		{ "name": "VS Code", "icon": "/img/apps/app-2.webp" },
+		{ "name": "Slack", "icon": "/img/apps/app-3.webp" },
+		{ "name": "Notion", "icon": "/img/apps/app-4.webp" },
+		{ "name": "Spotify", "icon": "/img/apps/app-5.webp" },
+		{ "name": "Chrome", "icon": "/img/apps/app-6.webp" },
+		{ "name": "Terminal", "icon": "/img/apps/app-7.webp" },
+		{ "name": "Discord", "icon": "/img/apps/app-8.webp" },
+		{ "name": "GitHub", "icon": "/img/apps/app-9.webp" },
+		{ "name": "Postman", "icon": "/img/apps/app-10.webp" },
+		{ "name": "Linear", "icon": "/img/apps/app-11.webp" },
+		{ "name": "Zoom", "icon": "/img/apps/app-12.webp" },
+		{ "name": "1Password", "icon": "/img/apps/app-13.webp" },
+		{ "name": "Arc", "icon": "/img/apps/app-14.webp" },
+		{ "name": "Raycast", "icon": "/img/apps/app-15.webp" },
+		{ "name": "CleanShot", "icon": "/img/apps/app-16.webp" },
+		{ "name": "Loom", "icon": "/img/apps/app-17.webp" },
+		{ "name": "ChatGPT", "icon": "/img/apps/app-18.webp" }
+	]
+}

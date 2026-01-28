@@ -1,0 +1,35 @@
+{
+	"name": "JP Casabianca",
+	"greeting": "Hey",
+	"headline": "An experienced UI/UX Designer and Engineer working remotely in EST Timezone.",
+	"availability": {
+		"isAvailable": true,
+		"status": "Open to Work (EST)"
+	},
+	"bio": "I can build full prototypes in Figma/Framer designed from scratch. Also, I can code them in Vue3/React + Node/Python, so I really bring value to product teams. I love new challenges, gravel cycling and Golf! Most recently working with Claude Code and others to boost my productivity.",
+	"typingPhrases": [
+		"I use React, Vite, and Claude Code to get shit done.",
+		"I create awesome digital experiences.",
+		"I design prototypes in Figma.",
+		"I love Gravel Cycling and Golf.",
+		"I own a Sports Apparel Brand.",
+		"I play Zelda and PS4."
+	],
+	"contact": {
+		"email": "hola@jpcasabianca.com",
+		"phone": "+57 (324) 364-2054",
+		"website": "www.jpcasabianca.com",
+		"brand": "www.casbianca.cc"
+	},
+	"social": {
+		"github": "https://github.com/jpcasabianca",
+		"linkedin": "https://linkedin.com/in/jpcasabianca"
+	},
+	"languages": [
+		{ "language": "English", "level": "Native" },
+		{ "language": "Spanish", "level": "Native" },
+		{ "language": "Portuguese", "level": "Beginner" },
+		{ "language": "French", "level": "Beginner" }
+	],
+	"softSkills": ["Problem solving", "Empathy", "Collaboration", "Communication", "Adaptability", "Accountability"]
+}

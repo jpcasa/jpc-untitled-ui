@@ -1,0 +1,72 @@
+{
+	"name": "untitledui-vite-starter-kit",
+	"version": "0.0.0",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc -b && vite build",
+		"preview": "vite preview",
+		"lint": "prettier --check \"src/**/*.{ts,tsx,json,css}\"",
+		"format": "prettier --write \"src/**/*.{ts,tsx,json,css}\"",
+		"test": "vitest",
+		"test:run": "vitest run",
+		"test:coverage": "vitest run --coverage",
+		"prepare": "husky"
+	},
+	"dependencies": {
+		"@tailwindcss/typography": "^0.5.19",
+		"@tailwindcss/vite": "^4.1.18",
+		"@untitledui/file-icons": "^0.0.8",
+		"@untitledui/icons": "^0.0.19",
+		"input-otp": "^1.4.2",
+		"motion": "^12.29.0",
+		"qr-code-styling": "^1.9.2",
+		"react": "^19.2.3",
+		"react-aria": "^3.45.0",
+		"react-aria-components": "^1.14.0",
+		"react-dom": "^19.2.3",
+		"react-helmet-async": "^2.0.5",
+		"react-hotkeys-hook": "^5.2.3",
+		"react-router": "^7.13.0",
+		"react-router-dom": "^7.13.0",
+		"recharts": "^3.7.0",
+		"tailwind-merge": "^3.4.0",
+		"tailwindcss": "^4.1.18",
+		"tailwindcss-animate": "^1.0.7",
+		"tailwindcss-react-aria-components": "^2.0.1"
+	},
+	"devDependencies": {
+		"@internationalized/date": "^3.10.1",
+		"@react-aria/utils": "^3.32.0",
+		"@react-stately/utils": "^3.11.0",
+		"@react-types/overlays": "^3.9.2",
+		"@react-types/shared": "^3.32.1",
+		"@tailwindcss/postcss": "^4.1.18",
+		"@testing-library/jest-dom": "^6.9.1",
+		"@testing-library/react": "^16.3.2",
+		"@testing-library/user-event": "^14.6.1",
+		"@trivago/prettier-plugin-sort-imports": "^5.2.2",
+		"@types/node": "^24.10.9",
+		"@types/react": "^19.2.9",
+		"@types/react-dom": "^19.2.3",
+		"@vitejs/plugin-react-swc": "^4.2.2",
+		"@vitest/coverage-v8": "^4.0.18",
+		"globals": "^16.5.0",
+		"husky": "^9.1.7",
+		"jsdom": "^27.4.0",
+		"lint-staged": "^16.2.7",
+		"prettier": "^3.8.1",
+		"prettier-plugin-tailwindcss": "^0.6.14",
+		"react-stately": "^3.43.0",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.53.1",
+		"vite": "^7.3.1",
+		"vitest": "^4.0.18"
+	},
+	"lint-staged": {
+		"*.{ts,tsx,json,css}": [
+			"prettier --write"
+		]
+	}
+}

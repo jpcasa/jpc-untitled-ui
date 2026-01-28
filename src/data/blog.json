@@ -1,0 +1,413 @@
+{
+	"header": {
+		"subtitle": "Thoughts & Ideas",
+		"title": "Blog",
+		"description": "Insights on design, development, and the creative process. Subscribe to stay updated with the latest posts."
+	},
+	"author": {
+		"name": "JP Casabianca",
+		"role": "UI/UX Designer & Engineer",
+		"avatarUrl": "/img/about-2.webp"
+	},
+	"posts": [
+		{
+			"id": "1",
+			"title": "The Art of Human-Centered Design",
+			"summary": "Exploring how empathy and user research drive better design decisions and create more meaningful products.",
+			"thumbnailUrl": "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80",
+			"heroImageUrl": "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1200&q=80",
+			"href": "https://medium.com/@jpc_774",
+			"category": "Design",
+			"author": "JP Casabianca",
+			"publishedAt": "Jan 15, 2024",
+			"readingTime": "6 min read",
+			"tags": [
+				{ "name": "Design", "color": "brand" },
+				{ "name": "UX", "color": "indigo" }
+			],
+			"featured": true,
+			"content": [
+				{
+					"type": "heading",
+					"text": "Introduction"
+				},
+				{
+					"type": "paragraph",
+					"text": "Human-centered design is more than just a methodology—it is a philosophy that puts people at the heart of every design decision. In a world where technology often feels impersonal, this approach reminds us that we are designing for humans with real needs, emotions, and limitations."
+				},
+				{
+					"type": "paragraph",
+					"text": "When I started my journey as a designer, I was focused primarily on aesthetics. Beautiful interfaces, trendy color palettes, and pixel-perfect layouts were my obsession. But over time, I realized that the most impactful designs are those that truly understand and serve their users."
+				},
+				{
+					"type": "quote",
+					"text": "Design is not just what it looks like and feels like. Design is how it works.",
+					"author": "Steve Jobs"
+				},
+				{
+					"type": "heading",
+					"text": "The Five Phases"
+				},
+				{
+					"type": "paragraph",
+					"text": "Human-centered design typically follows five interconnected phases: Empathize, Define, Ideate, Prototype, and Test. Each phase builds upon the previous one, creating a comprehensive understanding of the problem space before jumping to solutions."
+				},
+				{
+					"type": "paragraph",
+					"text": "The empathy phase is perhaps the most crucial. It involves immersing yourself in the user's world through interviews, observations, and contextual inquiries. This is where you set aside your assumptions and truly listen to understand the challenges people face."
+				},
+				{
+					"type": "image",
+					"url": "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=1000&q=80",
+					"caption": "Design thinking workshop in action"
+				},
+				{
+					"type": "heading",
+					"text": "Practical Applications"
+				},
+				{
+					"type": "paragraph",
+					"text": "In my recent projects, applying human-centered design principles has led to significant improvements in user satisfaction and engagement. For one client, we conducted extensive user research before redesigning their onboarding flow, resulting in a 40% increase in completion rates."
+				},
+				{
+					"type": "paragraph",
+					"text": "The key is to remain curious and humble throughout the process. No matter how experienced you become, there is always something new to learn from the people you are designing for."
+				},
+				{
+					"type": "conclusion",
+					"title": "Conclusion",
+					"text": "Human-centered design is not a one-time activity but a continuous commitment to understanding and serving users. By placing empathy at the core of our design process, we create products that are not only functional and beautiful but also meaningful and impactful. Start your next project by talking to real users, and you will be amazed at how much it transforms your approach."
+				}
+			]
+		},
+		{
+			"id": "2",
+			"title": "Building Scalable React Applications",
+			"summary": "Best practices for structuring React projects that grow with your team and business requirements.",
+			"thumbnailUrl": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
+			"heroImageUrl": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=1200&q=80",
+			"href": "https://medium.com/@jpc_774",
+			"category": "Engineering",
+			"author": "JP Casabianca",
+			"publishedAt": "Jan 10, 2024",
+			"readingTime": "8 min read",
+			"tags": [
+				{ "name": "React", "color": "blue" },
+				{ "name": "Development", "color": "success" }
+			],
+			"content": [
+				{
+					"type": "heading",
+					"text": "Introduction"
+				},
+				{
+					"type": "paragraph",
+					"text": "Building a React application is easy. Building a React application that scales with your team and business requirements is an entirely different challenge. Over the years, I have worked on projects ranging from small startups to enterprise-level applications, and I have learned that architecture decisions made early on can make or break a project."
+				},
+				{
+					"type": "paragraph",
+					"text": "In this article, I will share the patterns and practices that have served me well in building maintainable, scalable React applications."
+				},
+				{
+					"type": "heading",
+					"text": "Project Structure"
+				},
+				{
+					"type": "paragraph",
+					"text": "The first decision you will face is how to organize your files. I recommend a feature-based structure over a type-based one. Instead of grouping all components together, all hooks together, and all utilities together, group files by feature or domain."
+				},
+				{
+					"type": "quote",
+					"text": "The structure of your codebase should reflect the structure of your application, not the types of files it contains.",
+					"author": "Kent C. Dodds"
+				},
+				{
+					"type": "paragraph",
+					"text": "This approach makes it easier to understand the codebase, locate related code, and maintain boundaries between different parts of the application. When a feature needs to change, all related code is in one place."
+				},
+				{
+					"type": "image",
+					"url": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1000&q=80",
+					"caption": "Clean code organization is key to maintainability"
+				},
+				{
+					"type": "heading",
+					"text": "State Management"
+				},
+				{
+					"type": "paragraph",
+					"text": "State management is often overcomplicated. Before reaching for a global state library, ask yourself if you really need it. React Context combined with useReducer can handle many use cases that people traditionally solved with Redux."
+				},
+				{
+					"type": "paragraph",
+					"text": "For server state, tools like React Query or SWR have revolutionized how we handle data fetching, caching, and synchronization. They eliminate entire categories of bugs and boilerplate code."
+				},
+				{
+					"type": "conclusion",
+					"title": "Conclusion",
+					"text": "Scalability is not just about performance—it is about maintainability, team productivity, and the ability to adapt to changing requirements. By establishing clear patterns, embracing TypeScript, and choosing the right tools for the job, you can build React applications that stand the test of time."
+				}
+			]
+		},
+		{
+			"id": "3",
+			"title": "From Figma to Code: Bridging the Gap",
+			"summary": "How designers and developers can work together more effectively to ship better products faster.",
+			"thumbnailUrl": "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=800&q=80",
+			"heroImageUrl": "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=1200&q=80",
+			"href": "https://medium.com/@jpc_774",
+			"category": "Process",
+			"author": "JP Casabianca",
+			"publishedAt": "Jan 5, 2024",
+			"readingTime": "5 min read",
+			"tags": [
+				{ "name": "Figma", "color": "purple" },
+				{ "name": "Workflow", "color": "orange" }
+			],
+			"content": [
+				{
+					"type": "heading",
+					"text": "The Designer-Developer Divide"
+				},
+				{
+					"type": "paragraph",
+					"text": "One of the most common sources of friction in product teams is the handoff between design and development. Designers create beautiful mockups that somehow look different when implemented. Developers struggle to interpret design intent from static images. The result is frustration on both sides and products that fall short of their potential."
+				},
+				{
+					"type": "paragraph",
+					"text": "Having worked as both a designer and a developer, I have seen this problem from both perspectives. The good news is that it is solvable."
+				},
+				{
+					"type": "heading",
+					"text": "Shared Language"
+				},
+				{
+					"type": "paragraph",
+					"text": "The first step is establishing a shared language. When designers and developers use different terms for the same concepts, miscommunication is inevitable. A design system with documented component names, spacing scales, and color tokens creates a vocabulary that both teams can use."
+				},
+				{
+					"type": "quote",
+					"text": "The best collaboration happens when designers think like engineers and engineers think like designers.",
+					"author": "Julie Zhuo"
+				},
+				{
+					"type": "image",
+					"url": "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=1000&q=80",
+					"caption": "Figma has become the industry standard for design collaboration"
+				},
+				{
+					"type": "heading",
+					"text": "Practical Tips"
+				},
+				{
+					"type": "paragraph",
+					"text": "Include developers in design reviews early and often. Their technical perspective can identify implementation challenges before they become costly problems. Similarly, involve designers in code reviews to catch visual inconsistencies."
+				},
+				{
+					"type": "paragraph",
+					"text": "Use Figma's developer mode and inspection tools. They provide CSS values, spacing measurements, and asset exports that make implementation more precise. Auto Layout in Figma closely mirrors how Flexbox works in CSS."
+				},
+				{
+					"type": "conclusion",
+					"title": "Conclusion",
+					"text": "Bridging the gap between design and development requires empathy, communication, and the right tools. When both disciplines work together effectively, the result is products that are both beautiful and well-engineered. Start by building relationships with your counterparts and investing in shared systems that benefit everyone."
+				}
+			]
+		},
+		{
+			"id": "4",
+			"title": "The Power of Design Systems",
+			"summary": "Why every product team needs a design system and how to start building one from scratch.",
+			"thumbnailUrl": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&q=80",
+			"heroImageUrl": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&q=80",
+			"href": "https://medium.com/@jpc_774",
+			"category": "Design",
+			"author": "JP Casabianca",
+			"publishedAt": "Dec 28, 2023",
+			"readingTime": "7 min read",
+			"tags": [
+				{ "name": "Design Systems", "color": "brand" },
+				{ "name": "UI", "color": "pink" }
+			],
+			"content": [
+				{
+					"type": "heading",
+					"text": "What is a Design System?"
+				},
+				{
+					"type": "paragraph",
+					"text": "A design system is more than a component library or a style guide. It is a complete set of standards, documentation, and principles along with the tools to achieve them. It is the single source of truth that unifies design and development teams around a common visual language."
+				},
+				{
+					"type": "paragraph",
+					"text": "Think of it as the DNA of your product's user interface—the foundational building blocks that ensure consistency across every screen and interaction."
+				},
+				{
+					"type": "heading",
+					"text": "Why You Need One"
+				},
+				{
+					"type": "paragraph",
+					"text": "Without a design system, teams waste countless hours recreating the same components, debating design decisions that were already made, and fixing inconsistencies that confuse users. A design system eliminates this waste."
+				},
+				{
+					"type": "quote",
+					"text": "A design system is not a project. It is a product, serving products.",
+					"author": "Nathan Curtis"
+				},
+				{
+					"type": "image",
+					"url": "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1000&q=80",
+					"caption": "Design systems create consistency across products"
+				},
+				{
+					"type": "heading",
+					"text": "Getting Started"
+				},
+				{
+					"type": "paragraph",
+					"text": "Start with an audit of your existing products. Document the components, patterns, and styles that already exist. You will likely find multiple variations of the same elements—different button styles, inconsistent spacing, varying typography scales."
+				},
+				{
+					"type": "paragraph",
+					"text": "Then, define your foundations: colors, typography, spacing, and iconography. These are the atoms that combine to form molecules (components) and organisms (patterns). Document everything, including the reasoning behind decisions."
+				},
+				{
+					"type": "conclusion",
+					"title": "Conclusion",
+					"text": "Building a design system is a significant investment, but the returns are exponential. Faster design and development, improved consistency, better collaboration, and easier onboarding are just some of the benefits. Start small, iterate based on feedback, and treat your design system as a living product that evolves with your team's needs."
+				}
+			]
+		},
+		{
+			"id": "5",
+			"title": "Tailwind CSS: A Year Later",
+			"summary": "My experience using Tailwind CSS in production and why it changed how I think about styling.",
+			"thumbnailUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+			"heroImageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80",
+			"href": "https://medium.com/@jpc_774",
+			"category": "Engineering",
+			"author": "JP Casabianca",
+			"publishedAt": "Dec 20, 2023",
+			"readingTime": "6 min read",
+			"tags": [
+				{ "name": "CSS", "color": "blue-light" },
+				{ "name": "Tailwind", "color": "success" }
+			],
+			"content": [
+				{
+					"type": "heading",
+					"text": "Initial Skepticism"
+				},
+				{
+					"type": "paragraph",
+					"text": "When I first heard about Tailwind CSS, I was skeptical. Utility classes? In my markup? It felt like a step backward, a return to the inline styles we had moved away from years ago. But after a year of using it in production, I can confidently say it has transformed how I approach styling."
+				},
+				{
+					"type": "paragraph",
+					"text": "The key insight is that Tailwind is not about inline styles—it is about a constraint-based design system expressed through utilities."
+				},
+				{
+					"type": "heading",
+					"text": "The Benefits"
+				},
+				{
+					"type": "paragraph",
+					"text": "The productivity gains are real. No more context-switching between HTML and CSS files. No more inventing class names for one-off elements. No more specificity battles. You simply compose the styles you need directly in your markup."
+				},
+				{
+					"type": "quote",
+					"text": "Tailwind CSS is more of a design system than a CSS framework.",
+					"author": "Adam Wathan"
+				},
+				{
+					"type": "image",
+					"url": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=1000&q=80",
+					"caption": "Clean code with Tailwind CSS utilities"
+				},
+				{
+					"type": "heading",
+					"text": "Best Practices"
+				},
+				{
+					"type": "paragraph",
+					"text": "The key to using Tailwind effectively is component abstraction. When you find yourself repeating the same combination of utilities, extract them into a component. This keeps your markup readable while maintaining the benefits of utility-first CSS."
+				},
+				{
+					"type": "paragraph",
+					"text": "Also, embrace the configuration file. Tailwind's config is where you define your design tokens—colors, spacing, typography. This ensures consistency across your project and makes global changes trivial."
+				},
+				{
+					"type": "conclusion",
+					"title": "Conclusion",
+					"text": "Tailwind CSS has earned its place in my toolkit. It is not the right choice for every project, but for component-based applications where you control the markup, it is incredibly powerful. If you have been hesitant to try it, I encourage you to give it an honest chance on your next project."
+				}
+			]
+		},
+		{
+			"id": "6",
+			"title": "Remote Work as a Designer",
+			"summary": "Tips and tools for staying productive and connected while working remotely as a creative professional.",
+			"thumbnailUrl": "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&q=80",
+			"heroImageUrl": "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=1200&q=80",
+			"href": "https://medium.com/@jpc_774",
+			"category": "Productivity",
+			"author": "JP Casabianca",
+			"publishedAt": "Dec 15, 2023",
+			"readingTime": "5 min read",
+			"tags": [
+				{ "name": "Remote", "color": "gray-blue" },
+				{ "name": "Productivity", "color": "warning" }
+			],
+			"content": [
+				{
+					"type": "heading",
+					"text": "The Remote Reality"
+				},
+				{
+					"type": "paragraph",
+					"text": "Working remotely as a designer presents unique challenges. Design is inherently collaborative—we need to share our work, gather feedback, and iterate quickly. Without the casual interactions of an office environment, we must be more intentional about communication and collaboration."
+				},
+				{
+					"type": "paragraph",
+					"text": "After several years of remote work, I have developed systems and habits that keep me productive and connected. Here is what has worked for me."
+				},
+				{
+					"type": "heading",
+					"text": "Creating Your Environment"
+				},
+				{
+					"type": "paragraph",
+					"text": "Your workspace matters more than you might think. Invest in a comfortable chair, proper lighting, and a setup that separates work from life. I have a dedicated room for work, which helps me mentally switch between 'work mode' and 'home mode.'"
+				},
+				{
+					"type": "quote",
+					"text": "The office is not a place, it is a mindset.",
+					"author": "Matt Mullenweg"
+				},
+				{
+					"type": "image",
+					"url": "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=1000&q=80",
+					"caption": "A well-organized home office setup"
+				},
+				{
+					"type": "heading",
+					"text": "Staying Connected"
+				},
+				{
+					"type": "paragraph",
+					"text": "Over-communicate. When you cannot tap someone on the shoulder, you need to be proactive about sharing updates, asking questions, and providing context. I share work-in-progress screenshots daily, even when I am not seeking feedback—it keeps the team informed and creates opportunities for early input."
+				},
+				{
+					"type": "paragraph",
+					"text": "Embrace asynchronous communication. Not every discussion needs to be a meeting. Tools like Loom for video messages and well-written documents can convey information without requiring everyone to be online simultaneously."
+				},
+				{
+					"type": "conclusion",
+					"title": "Conclusion",
+					"text": "Remote work offers incredible flexibility and focus time, but it requires discipline and intentionality. Create systems that work for you, invest in your workspace, and prioritize connection with your team. Done well, remote design work can be more productive and fulfilling than traditional office work."
+				}
+			]
+		}
+	]
+}

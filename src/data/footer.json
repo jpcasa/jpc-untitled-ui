@@ -1,0 +1,39 @@
+{
+	"cta": {
+		"title": "Want to get in touch?",
+		"description": "Just click on the button on the right and shoot me any questions you have"
+	},
+	"description": "Hey, I'm JP. An experienced UI/UX Designer and Engineer based in Bogota, Colombia. Working Remotely EST Timezone.",
+	"menus": [
+		{
+			"title": "Main Menu",
+			"items": [
+				{ "name": "About Me", "link": "/about", "local": true },
+				{ "name": "Work", "link": "/work", "local": true },
+				{ "name": "Process", "link": "/creative-process", "local": true },
+				{ "name": "Resources", "link": "/resources", "local": true },
+				{ "name": "Gallery", "link": "https://dribbble.com/jpcasabiancai", "local": false },
+				{ "name": "Blog", "link": "https://medium.com/@jpc_774", "local": false }
+			]
+		},
+		{
+			"title": "Social",
+			"items": [
+				{ "name": "Instagram", "link": "https://www.instagram.com/jpcasabiancai/", "local": false },
+				{ "name": "LinkedIn", "link": "https://www.linkedin.com/in/juan-pablo-casabianca/", "local": false },
+				{ "name": "GitHub", "link": "https://github.com/jpcasa", "local": false },
+				{ "name": "Dribbble", "link": "https://dribbble.com/jpcasabiancai", "local": false },
+				{ "name": "Behance", "link": "https://www.behance.net/jpcasabianca", "local": false }
+			]
+		},
+		{
+			"title": "More",
+			"items": [
+				{ "name": "Download CV", "link": "/PDF/CV_2023.pdf", "local": false },
+				{ "name": "Privacy Policy", "link": "/privacy-policy", "local": true },
+				{ "name": "Email Me", "link": "mailto:hola@jpcasabianca.com", "local": false },
+				{ "name": "WhatsApp", "link": "https://wa.me/573028608427", "local": false }
+			]
+		}
+	]
+}

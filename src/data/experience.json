@@ -1,0 +1,100 @@
+[
+	{
+		"company": "Revy Autos",
+		"role": "Senior Frontend + UI Design",
+		"tech": "Vue + Figma",
+		"period": "Jan 2025 - Dec 2025",
+		"location": "Remote / USA",
+		"description": "An AI assistant to list vehicles for sale.",
+		"highlights": [
+			"Designed and created the First MVP launch for market",
+			"Connection to chat with Open AI and Claude",
+			"Agentic development to streamline the listing process"
+		],
+		"metrics": ["MVP in 3 months", "AI-powered workflows"]
+	},
+	{
+		"company": "Fuse Finance",
+		"role": "Design Lead + UI/UX",
+		"tech": "React + Figma",
+		"period": "Aug 2023 - Dec 2024",
+		"location": "Remote / USA",
+		"description": "An AI-powered Loan Origination System made for automation.",
+		"highlights": [
+			"Was in charge of the design team. We did user research, ideation, and followed the design system to create the application.",
+			"Design System, Prototyping, and more in Figma.",
+			"Created an automated process to handoff design to development."
+		],
+		"metrics": ["Led 5-person team", "40% faster handoff"]
+	},
+	{
+		"company": "LeafLink",
+		"role": "Senior Fullstack JS Engineer",
+		"tech": "Vue + Node",
+		"period": "Aug 2022 - Aug 2023",
+		"location": "Remote / USA",
+		"description": "Wholesale Cannabis platform for USA Merchants.",
+		"highlights": [
+			"Worked with a team of 12+ developers with Agile Methodology",
+			"Vue 3 + Vite.js stack. Typescript and Unit Tests included.",
+			"Oversaw the migration of Vue 2 to Vue 3 composition API."
+		],
+		"metrics": ["12+ dev team", "Vue 2 to 3 migration"]
+	},
+	{
+		"company": "Cartkit",
+		"role": "Senior Fullstack Engineer",
+		"tech": "Vue + Ruby",
+		"period": "Sep 2018 - Aug 2022",
+		"location": "Remote / USA",
+		"description": "Marketing Automation & Analysis Apps for Shopify.",
+		"highlights": [
+			"Lead Frontend Team and Development for Cartkit's Apps",
+			"Design new features and pages for the application. (Figma + Adobe)",
+			"Maintain and own the application's frontend.",
+			"Current Tech Stack: Vue 3, Vite.js, Nuxt 3, Tailwind, Serverless, Ruby on Rails, ES"
+		],
+		"metrics": ["4 years tenure", "Led frontend team"]
+	},
+	{
+		"company": "Rabinovici",
+		"role": "Senior Fullstack Engineer",
+		"tech": "React + Python",
+		"period": "Jun 2017 - Sep 2018",
+		"location": "Remote / USA",
+		"description": "Marketing and Development shop based in Miami, FL.",
+		"highlights": [
+			"Maintain and create emails, landing pages and web applications for clients like Zebra, HP, Wacom, Motorola, and more. (React)",
+			"Automate solutions for clients and internal processes. (Python + Django)"
+		],
+		"metrics": ["Enterprise clients", "Process automation"]
+	},
+	{
+		"company": "Codesign",
+		"role": "Founder & CEO",
+		"tech": "",
+		"period": "Feb 2013 - May 2017",
+		"location": "Bogota, Colombia",
+		"description": "Founded a creative Studio that did Design, Development, and Marketing.",
+		"highlights": [
+			"10+ Projects leaded for clients. 20+ clients closed in sales meetings.",
+			"HTML5, SASS, Javascript Frameworks (Vue.js, React, Angular)",
+			"Adobe CC for Design Prototypes and Mockups"
+		],
+		"metrics": ["20+ clients", "10+ projects delivered"]
+	},
+	{
+		"company": "Grupo Inspiro",
+		"role": "Fullstack Engineer + UI/UX Design",
+		"tech": "",
+		"period": "Jan 2011 - Jan 2013",
+		"location": "Bogota, Colombia",
+		"description": "Tech Incubator in Bogota, Colombia.",
+		"highlights": [
+			"Used Javascript, SASS, and HTML for frontend projects",
+			"Used PHP + Laravel for the backend stack.",
+			"Delivered and maintained 5 projects. Attended team meetings and collaborated with clients."
+		],
+		"metrics": ["5 projects shipped", "Full-stack role"]
+	}
+]

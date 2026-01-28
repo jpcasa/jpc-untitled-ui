@@ -1,0 +1,219 @@
+[
+	{
+		"id": 1,
+		"slug": "casabianca-cycling",
+		"title": "Casabianca Cycling",
+		"subtitle": "Ecommerce",
+		"summary": "Exploring a unique opportunity in Colombia: Cycling. After picking up 5 years of expertise on ecommerce saas, I decided to open a Cycling and Athletic Apparel Store. I design every single product and made the online shop and admin from scratch.",
+		"image": "/img/case-studies/casabianca@2x.png",
+		"logo": "/img/case-studies/casabianca-logo.webp",
+		"bgColor": "#ffffff",
+		"titleColor": "#ffffff",
+		"subtitleColor": "#08D777",
+		"summaryColor": "#ffffff",
+		"benefitColor": "#005353",
+		"benefits": [
+			{
+				"label": "Product Design in Photoshop",
+				"description": "I design the cycling apparel in Photoshop with a great set of mockups. With this tool, we can really get a real sense of how the products will look like in real life."
+			},
+			{
+				"label": "Shop created with Vue.js",
+				"description": "No questions when choosing the framework and language. In this case, I used Nuxt.js and Vue to create a minimal and awesome online shop."
+			},
+			{
+				"label": "Using Database as a Service",
+				"description": "I'm using Strapi for my Database as a service. Strapi is an open source Javascript framework that enables you to create APIs in seconds."
+			}
+		],
+		"tags": ["Vue.js", "Nuxt", "Strapi", "Photoshop"],
+		"link": "https://www.casabianca.cc/",
+		"outcomes": ["Full-stack solo build", "Live ecommerce store"]
+	},
+	{
+		"id": 2,
+		"slug": "frida-real-estate-assistant",
+		"title": "Frida - Real Estate Assistant",
+		"subtitle": "Real Estate",
+		"summary": "Frida is all you need in a real estate assistant. Frida automates all of your sales and marketing efforts, organizes your properties, lets you share them with your contacts, and helps you close more business.",
+		"image": "/img/case-studies/frida.png",
+		"logo": "/img/case-studies/frida-logo.webp",
+		"bgColor": "#F5FFF9",
+		"titleColor": "#002323",
+		"subtitleColor": "#002323",
+		"summaryColor": "#163637",
+		"benefitColor": "#00944F",
+		"benefits": [
+			{
+				"label": "Vue 3 + Vite.js + Github Copilot",
+				"description": "Using the latest Vue version, Vite and Naive UI to make this app fast and reliable."
+			},
+			{
+				"label": "Directus as Database",
+				"description": "Directus is a headless CMS that lets you create a database in seconds. Great tool for small projects and open source."
+			},
+			{
+				"label": "Full Figma Prototype",
+				"description": "Full prototype and components in Figma. Created a full prototype to maintain and develop product initiatives easier."
+			}
+		],
+		"tags": ["Vue 3", "Vite", "Directus", "Figma"],
+		"link": "https://www.soyfrida.io/",
+		"outcomes": ["End-to-end product", "Active users in Colombia"]
+	},
+	{
+		"id": 3,
+		"slug": "hi-there",
+		"title": "Hi There",
+		"subtitle": "Lead Generation Tool",
+		"summary": "Hi there is a dead simple widget to communicate with your clients, on their preferred channels. You can choose what services you use, select if you want to capture leads, and send contacts to your databases.",
+		"image": "/img/case-studies/hi-there-top.webp",
+		"logo": "/img/case-studies/hi-there-logo.png",
+		"bgColor": "#6941C6",
+		"titleColor": "#ffffff",
+		"subtitleColor": "#E9D7FE",
+		"summaryColor": "#E9D7FE",
+		"benefitColor": "#7F56D9",
+		"benefits": [
+			{
+				"label": "Full Stack Javascript",
+				"description": "Using the latest full stack javascript stack, I created a couple of micro-services to deliver minimal widgets to sites."
+			},
+			{
+				"label": "Directus Database",
+				"description": "Using Directus cloud, saving a lot of time in dev ops. They have a great paid version of a Database as a service."
+			},
+			{
+				"label": "Figma and Untitled UI",
+				"description": "Full prototype and components in Figma. Created a full prototype to maintain and develop product initiatives easier."
+			}
+		],
+		"tags": ["Vue 3", "Vite", "Directus", "Untitled UI"],
+		"link": "https://www.joinhithere.com/",
+		"outcomes": ["SaaS widget product", "Multi-channel support"]
+	},
+	{
+		"id": 4,
+		"slug": "amplified",
+		"title": "Amplified",
+		"subtitle": "Automation Tool for Shopify",
+		"summary": "The Full Automation tool for Shopify. From cart recovery to broadcast campaigns, customers can send email and SMS messages.",
+		"image": "/img/case-studies/amplified-top.webp",
+		"logo": "/img/case-studies/amplified-logo.png",
+		"bgColor": "#F2F6FA",
+		"titleColor": "#002140",
+		"subtitleColor": "#002140",
+		"summaryColor": "#464F5A",
+		"benefitColor": "#3A87F7",
+		"benefits": [
+			{
+				"label": "Using Vue 3 and Vite.js",
+				"description": "Using the latest Vue version, Vite and Naive UI to make this app fast and reliable."
+			},
+			{
+				"label": "Complex app, simple code",
+				"description": "With Vue 3, we were able to take out the complexity of a full automation tool and deliver great and simple code that is actually readable."
+			},
+			{
+				"label": "Complete prototype in Figma",
+				"description": "Complete prototype and components with navigation in Figma. We use it to organize our designs and product initiatives."
+			}
+		],
+		"tags": ["Vue 3", "Vite", "Shopify", "Figma"],
+		"link": "https://apps.shopify.com/amplified",
+		"outcomes": ["1000+ Shopify installs", "Email + SMS automation"]
+	},
+	{
+		"id": 5,
+		"slug": "salespop",
+		"title": "Sales Pop",
+		"subtitle": "Sales Conversion Tool",
+		"summary": "Salespop is a simple application built for Shopify that promotes sales through Social Proof and Urgency.",
+		"image": "/img/case-studies/salespop-top.png",
+		"logo": "/img/case-studies/salespop-logo.png",
+		"bgColor": "#6563FF",
+		"titleColor": "#ffffff",
+		"subtitleColor": "#ffffff",
+		"summaryColor": "#DCE6EE",
+		"benefitColor": "#6563FF",
+		"benefits": [
+			{
+				"label": "Product Design Figma",
+				"description": "Complete prototype and components with navigation in Figma. We use it to organize our designs and product initiatives."
+			},
+			{
+				"label": "Nuxt.js for Frontend",
+				"description": "No questions when choosing the framework and language. In this case, we used Nuxt.js and Vue to create a minimal and awesome product."
+			},
+			{
+				"label": "Ruby on Rails for Backend",
+				"description": "We used Ruby on Rails to create the backend of the app. We used the Shopify API to connect to the Shopify Store."
+			}
+		],
+		"tags": ["Nuxt.js", "Vue", "Ruby on Rails", "Shopify"],
+		"link": "https://apps.shopify.com/shoppop",
+		"outcomes": ["5000+ Shopify installs", "Social proof conversion"]
+	},
+	{
+		"id": 6,
+		"slug": "codesign",
+		"title": "Codesign Studio",
+		"subtitle": "Digital Agency",
+		"summary": "We created a modern digital agency that provided Coding, Design, and Marketing services to SMBs in Colombia, LATAM, and the US.",
+		"image": "/img/case-studies/codesign-top.png",
+		"logo": "/img/case-studies/codesign-logo.png",
+		"bgColor": "#FFF5FB",
+		"titleColor": "#69043A",
+		"subtitleColor": "#69043A",
+		"summaryColor": "#8795A1",
+		"benefitColor": "#952E65",
+		"benefits": [
+			{
+				"label": "Design and Consulting",
+				"description": "We implemented a design and consulting method based on Design Thinking to create unique digital experiences."
+			},
+			{
+				"label": "Full Stack Development",
+				"description": "From backend to frontend, we provided full-stack programming services. We used Javascript, HTML, SASS, and PHP."
+			},
+			{
+				"label": "Inbound Marketing",
+				"description": "We specialized in Inbound Marketing and received a Hubspot inbound certification for the agency."
+			}
+		],
+		"tags": ["Design Thinking", "Javascript", "PHP", "Marketing"],
+		"link": null,
+		"outcomes": ["20+ clients served", "4 years operation"]
+	},
+	{
+		"id": 7,
+		"slug": "printa-delivery",
+		"title": "Printa Delivery",
+		"subtitle": "Printing Service",
+		"summary": "Printa Delivery is a complete printing service for Designers and Architects. People can easily print complex projects and get them delivered.",
+		"image": "/img/case-studies/printa-top.png",
+		"logo": "/img/case-studies/printa-logo.png",
+		"bgColor": "#049FE7",
+		"titleColor": "#ffffff",
+		"subtitleColor": "#ffffff",
+		"summaryColor": "#DCE6EE",
+		"benefitColor": "#049FE7",
+		"benefits": [
+			{
+				"label": "Complete Branding Book",
+				"description": "Complete branding book with logos, colors, typography, and many more made with Adobe Illustrator."
+			},
+			{
+				"label": "Platform and Brand Design",
+				"description": "We designed and tested the platform on Invision. We made emphasis on the mobile version to make designers lives a lot easier."
+			},
+			{
+				"label": "Coding and Maintenance",
+				"description": "We coded and maintained the project for 3 years (its duration, unfortunately without funds our clients were forced to stop the project)."
+			}
+		],
+		"tags": ["Branding", "Invision", "Javascript", "Node.js"],
+		"link": null,
+		"outcomes": ["Complete brand identity", "3 years maintained"]
+	}
+]
