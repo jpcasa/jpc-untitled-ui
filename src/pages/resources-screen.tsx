@@ -1,6 +1,8 @@
 import type { FC } from 'react'
 import { useMemo, useState } from 'react'
 
+import { useTranslation } from 'react-i18next'
+
 import { Select } from '@/components/base/select/select'
 import { Footer } from '@/components/layout/footer'
 import { PageHeader } from '@/components/layout/page-header'
@@ -12,6 +14,7 @@ import resourcesData from '@/data/resources.json'
 type FilterValue = 'all' | 'design' | 'engineering' | 'productivity' | 'marketing'
 
 export const ResourcesScreen: FC = () => {
+	const { t } = useTranslation()
 	const [activeFilter, setActiveFilter] = useState<FilterValue>(resourcesData.defaultFilter as FilterValue)
 
 	const filteredResources = useMemo(() => {
@@ -21,9 +24,17 @@ export const ResourcesScreen: FC = () => {
 		return resourcesData.resources.filter((resource) => resource.category === activeFilter)
 	}, [activeFilter])
 
+	const filterLabels: Record<FilterValue, string> = {
+		all: t('resources.filters.all'),
+		design: t('resources.filters.design'),
+		engineering: t('resources.filters.engineering'),
+		productivity: t('resources.filters.productivity'),
+		marketing: t('resources.filters.marketing'),
+	}
+
 	const selectItems = resourcesData.filters.map((filter) => ({
 		id: filter.value,
-		label: filter.label,
+		label: filterLabels[filter.value as FilterValue],
 	}))
 
 	return (
@@ -36,16 +47,16 @@ export const ResourcesScreen: FC = () => {
 			<BreadcrumbJsonLd
 				items={[
 					{ name: 'Home', url: '/' },
-					{ name: 'Resources', url: '/resources' },
+					{ name: t('nav.resources'), url: '/resources' },
 				]}
 			/>
 
 			<div className='mb-24'>
 				<PageHeader align='center'>
 					<div className='mx-auto max-w-2xl'>
-						<p className='mb-3 font-medium text-brand-400'>{resourcesData.header.subtitle}</p>
-						<h1 className='mb-6 text-4xl font-semibold text-white md:text-5xl'>{resourcesData.header.title}</h1>
-						<p className='text-gray-300'>{resourcesData.header.description}</p>
+						<p className='mb-3 font-medium text-brand-400'>{t('resources.subtitle')}</p>
+						<h1 className='mb-6 text-4xl font-semibold text-white md:text-5xl'>{t('resources.title')}</h1>
+						<p className='text-gray-300'>{t('resources.description')}</p>
 					</div>
 				</PageHeader>
 
@@ -72,7 +83,7 @@ export const ResourcesScreen: FC = () => {
 
 							{/* Desktop Filter Menu */}
 							<div className='hidden md:block'>
-								<div className='overflow-hidden rounded-lg border border-gray-200 bg-white'>
+								<div className='overflow-hidden rounded-lg border border-secondary bg-primary'>
 									{resourcesData.filters.map((filter) => (
 										<button
 											key={filter.value}
@@ -80,10 +91,10 @@ export const ResourcesScreen: FC = () => {
 											className={`w-full cursor-pointer border border-transparent px-4 py-3 text-left text-sm transition-colors first:rounded-t-lg last:rounded-b-lg ${
 												activeFilter === filter.value
 													? 'border-brand-500 bg-brand-100 text-brand-600'
-													: 'text-gray-500 hover:text-brand-600'
+													: 'text-secondary hover:text-brand-600'
 											}`}
 										>
-											{filter.label}
+											{filterLabels[filter.value as FilterValue]}
 										</button>
 									))}
 								</div>

@@ -1,0 +1,285 @@
+{
+	"nav": {
+		"about": "Sobre",
+		"work": "Projetos",
+		"blog": "Blog",
+		"resources": "Recursos",
+		"creativeProcess": "Processo Criativo",
+		"play": "Play",
+		"cv": "CV",
+		"letsConnect": "Vamos Conectar",
+		"darkMode": "Modo Escuro",
+		"lightMode": "Modo Claro"
+	},
+	"home": {
+		"greeting": "Olá, sou JP. Um Designer UI/UX e Engenheiro experiente.",
+		"description": "Posso construir protótipos completos no Figma/Framer projetados do zero. Também posso codificá-los em Vue3/React + Node/Python, então realmente agrego valor às equipes de produto. Adoro novos desafios, ciclismo gravel e Golf!",
+		"cta": "Saiba Mais Sobre Mim"
+	},
+	"about": {
+		"title": "Sobre",
+		"heroTitle": "Olá, sou JP. Um Designer UI/UX e Engenheiro Fullstack experiente.",
+		"heroDescription": "Posso construir protótipos completos no Figma/Framer projetados do zero. Também posso codificá-los em Vue3/React + Node/Python, então realmente agrego valor às equipes de produto. Adoro novos desafios, Golf e Ciclismo Gravel!",
+		"skills": {
+			"title": "Minhas Habilidades",
+			"description": "Descubra quais ferramentas, apps e serviços eu uso no meu trabalho e vida diária. Encontre habilidades de design, frontend, backend e marketing."
+		},
+		"experience": {
+			"title": "Minha Experiência",
+			"subtitle": "As empresas com as quais trabalhei",
+			"description": "Descubra as experiências que tive na minha carreira. Trabalhei com muitas empresas e startups como designer, desenvolvedor e consultor.",
+			"resume": "Currículo",
+			"resumeDescription": "Baixe uma cópia do meu currículo mais recente em PDF",
+			"downloadCv": "Baixar CV"
+		},
+		"apps": {
+			"title": "Meus Apps Habituais",
+			"subtitle": "Ferramentas que uso diariamente",
+			"description": "Esses são os apps e ferramentas que uso diariamente para projetar, codificar e manter a produtividade."
+		},
+		"testimonials": {
+			"title": "O Que as Pessoas Dizem...",
+			"subtitle": "Depoimentos honestos de pessoas com quem trabalhei",
+			"description": "Estes são alguns dos depoimentos que recebi de pessoas com quem trabalhei. Trabalhei com muitas empresas e startups como designer, desenvolvedor e consultor."
+		},
+		"highlights": {
+			"title": "Impacto em um Olhar",
+			"subtitle": "Conquistas Principais",
+			"description": "Números que demonstram impacto real e experiência.",
+			"metrics": {
+				"experience": "Anos de Experiência",
+				"products": "Produtos Entregues",
+				"installs": "Instalações Shopify",
+				"clients": "Clientes Atendidos"
+			}
+		},
+		"featuredWork": {
+			"title": "Trabalho em Destaque",
+			"subtitle": "Projetos Selecionados",
+			"description": "Uma seleção dos meus projetos mais impactantes com resultados mensuráveis.",
+			"viewAll": "Ver Todos os Projetos"
+		},
+		"education": {
+			"title": "Educação e Certificações",
+			"subtitle": "Formação",
+			"description": "Minha formação acadêmica e credenciais profissionais."
+		},
+		"languages": {
+			"title": "Idiomas",
+			"subtitle": "Comunicação",
+			"description": "Idiomas que falo para colaboração global.",
+			"levels": {
+				"native": "Nativo",
+				"beginner": "Iniciante"
+			}
+		},
+		"softSkills": {
+			"title": "Habilidades Interpessoais",
+			"subtitle": "O Que Eu Trago para as Equipes",
+			"description": "Qualidades pessoais para colaboração efetiva."
+		},
+		"cta": {
+			"title": "Pronto para trabalhar juntos?",
+			"description": "Atualmente estou aberto a novas oportunidades. Vamos discutir como posso agregar valor à sua equipe.",
+			"viewWork": "Ver Meu Trabalho",
+			"downloadCv": "Baixar CV",
+			"connect": "Vamos Conectar"
+		}
+	},
+	"work": {
+		"title": "Meu Trabalho",
+		"subtitle": "Projetos Selecionados",
+		"description": "Uma coleção de projetos nos quais trabalhei, de startups a soluções empresariais."
+	},
+	"blog": {
+		"title": "Blog",
+		"subtitle": "Pensamentos e Insights",
+		"description": "Artigos sobre design, desenvolvimento e o processo criativo.",
+		"viewAll": "Ver todos os posts no Medium",
+		"latestPosts": "Últimos posts do blog",
+		"moreInsights": "Mais insights sobre design, desenvolvimento e o processo criativo.",
+		"viewAllPosts": "Ver todos os posts",
+		"backToBlog": "Voltar ao Blog",
+		"published": "Publicado"
+	},
+	"resources": {
+		"title": "Recursos",
+		"subtitle": "Ferramentas e Recursos",
+		"description": "Uma coleção curada de ferramentas, recursos e referências que acho úteis.",
+		"filters": {
+			"all": "Todos",
+			"design": "Design",
+			"engineering": "Engenharia",
+			"productivity": "Produtividade",
+			"marketing": "Marketing"
+		}
+	},
+	"creativeProcess": {
+		"title": "Meu Processo Criativo",
+		"subtitle": "Onde o Design Encontra a Engenharia",
+		"description": "Uma abordagem sistemática para resolver problemas complexos através de design centrado no humano e código limpo e sustentável. Da descoberta à entrega, cada etapa cria valor real.",
+		"metrics": {
+			"projects": "50+ Projetos",
+			"experience": "10+ Anos",
+			"approach": "Design + Código"
+		},
+		"designSection": {
+			"title": "Design Centrado no Humano",
+			"subtitle": "O Processo de Design",
+			"description": "Todo grande produto começa entendendo as pessoas. Sigo uma metodologia comprovada de design thinking que coloca os usuários no centro de cada decisão, garantindo soluções que realmente ressoam."
+		},
+		"designSteps": {
+			"empathize": {
+				"title": "Empatizar",
+				"description": "Mergulho profundo nas necessidades dos usuários através de entrevistas, observações e pesquisa. Construir compreensão genuína é a base de um design significativo.",
+				"deliverable": "Personas de Usuário e Mapas de Jornada"
+			},
+			"define": {
+				"title": "Definir",
+				"description": "Sintetizar a pesquisa em declarações claras do problema. Ter clareza total sobre o desafio é frequentemente mais difícil do que resolvê-lo.",
+				"deliverable": "Declaração do Problema e Métricas de Sucesso"
+			},
+			"ideate": {
+				"title": "Idear",
+				"description": "Explorar soluções criativas sem restrições. As melhores ideias frequentemente vêm de combinações inesperadas e pensamento ousado.",
+				"deliverable": "Wireframes e Esboços de Conceitos"
+			},
+			"prototype": {
+				"title": "Prototipar",
+				"description": "Construir para aprender, não para lançar. Protótipos de alta fidelidade no Figma nos permitem testar ideias antes de escrever uma única linha de código.",
+				"deliverable": "Protótipos Interativos e Sistemas de Design"
+			},
+			"test": {
+				"title": "Testar",
+				"description": "Validar suposições com usuários reais. Testes de usabilidade revelam insights que a intuição sozinha não pode fornecer.",
+				"deliverable": "Relatórios de Usabilidade e Insights"
+			},
+			"iterate": {
+				"title": "Iterar",
+				"description": "Refinar incansavelmente baseado em feedback. Grande design nunca está terminado—ele evolui com as necessidades dos usuários e objetivos de negócio.",
+				"deliverable": "Designs Polidos e Especificações de Handoff"
+			}
+		},
+		"approach": {
+			"title": "O Que Me Diferencia",
+			"subtitle": "Minha Abordagem",
+			"description": "Uma combinação única de habilidades e mentalidade que impulsiona resultados excepcionais.",
+			"designCode": {
+				"title": "Design + Código",
+				"description": "Eu faço a ponte entre design e desenvolvimento. Sem mais momentos perdidos na tradução—garanto implementação pixel-perfect porque falo ambas as linguagens fluentemente."
+			},
+			"userCentered": {
+				"title": "Centrado no Usuário",
+				"description": "Cada decisão é apoiada por pesquisa de usuário e dados. Não apenas faço as coisas bonitas—faço elas funcionarem para as pessoas que as usam."
+			},
+			"iterative": {
+				"title": "Mentalidade Iterativa",
+				"description": "Melhoria contínua através de ciclos rápidos de feedback. Entrego rápido, aprendo mais rápido, e sempre busco melhores resultados."
+			}
+		},
+		"codeSection": {
+			"title": "Código Limpo e Escalável",
+			"subtitle": "O Processo de Desenvolvimento",
+			"description": "Escrevo código que não é apenas funcional, mas sustentável. Stacks tecnológicos modernos, testes abrangentes e melhores práticas garantem que seu produto escale com confiança.",
+			"techStack": "React, Vue 3, TypeScript, Tailwind CSS, Node.js, Python",
+			"principles": {
+				"title": "Princípios de Desenvolvimento",
+				"items": {
+					"typescript": "100% TypeScript para segurança de tipos",
+					"testing": "Cobertura de testes abrangente",
+					"performance": "Arquitetura focada em performance",
+					"accessibility": "Acessibilidade integrada, não adicionada depois"
+				}
+			}
+		},
+		"results": {
+			"title": "Resultados Reais",
+			"subtitle": "Orientado por Impacto",
+			"description": "Números que refletem o valor que trago para equipes e produtos.",
+			"metrics": {
+				"handoff": {
+					"value": "40%",
+					"label": "Handoff de Design Mais Rápido"
+				},
+				"teams": {
+					"value": "5+",
+					"label": "Equipes Lideradas"
+				},
+				"mvp": {
+					"value": "3mo",
+					"label": "Tempo Médio de MVP"
+				},
+				"satisfaction": {
+					"value": "100%",
+					"label": "Satisfação do Cliente"
+				}
+			}
+		},
+		"appsSection": {
+			"title": "Ferramentas do Ofício",
+			"subtitle": "Meu Stack Diário",
+			"description": "Os apps e ferramentas que uso todos os dias para projetar, codar e entregar ótimos produtos.",
+			"tabs": {
+				"design": "Design",
+				"code": "Código",
+				"productivity": "Produtividade"
+			}
+		},
+		"cta": {
+			"title": "Pronto para dar vida à sua visão?",
+			"description": "Vamos criar algo incrível juntos. Se você precisa de design, desenvolvimento, ou ambos—estou aqui para ajudar.",
+			"viewWork": "Ver Meu Trabalho",
+			"connect": "Vamos Conectar"
+		}
+	},
+	"footer": {
+		"description": "Olá, sou JP. Um Designer UI/UX e Engenheiro experiente baseado em Bogotá, Colômbia. Trabalhando Remotamente no Fuso Horário EST.",
+		"techStack": {
+			"title": "Tech Stack Deste Portfolio",
+			"subtitle": "Construído com tecnologias modernas",
+			"viewSource": "Ver Código Fonte"
+		},
+		"cta": {
+			"title": "Vamos trabalhar juntos",
+			"description": "Estou sempre aberto a discutir novos projetos e oportunidades.",
+			"contact": "Entre em Contato"
+		},
+		"menus": {
+			"mainMenu": "Menu Principal",
+			"social": "Redes Sociais",
+			"more": "Mais"
+		},
+		"links": {
+			"aboutMe": "Sobre Mim",
+			"work": "Projetos",
+			"process": "Processo",
+			"resources": "Recursos",
+			"gallery": "Galeria",
+			"blog": "Blog",
+			"downloadCv": "Baixar CV",
+			"viewSourceCode": "Ver Código Fonte",
+			"emailMe": "Me Envie um Email"
+		},
+		"copyright": "Todos os direitos reservados."
+	},
+	"common": {
+		"learnMore": "Saiba Mais",
+		"viewProject": "Ver Projeto",
+		"readMore": "Ler Mais",
+		"contactMe": "Entre em Contato",
+		"openToWork": "Disponível para Trabalho Remoto (EST)"
+	},
+	"errors": {
+		"notFound": {
+			"title": "Página não encontrada",
+			"description": "Desculpe, a página que você procura não existe ou foi movida.",
+			"backHome": "Voltar ao início"
+		},
+		"somethingWrong": {
+			"title": "Algo deu errado",
+			"description": "Desculpe, mas algo inesperado aconteceu. Por favor, tente novamente ou retorne à página inicial.",
+			"tryAgain": "Tentar Novamente",
+			"goHome": "Ir para o Início"
+		}
+	}
+}

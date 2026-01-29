@@ -1,5 +1,7 @@
 import type { FC } from 'react'
 
+import { useTranslation } from 'react-i18next'
+
 import { Footer } from '@/components/layout/footer'
 import { PageHeader } from '@/components/layout/page-header'
 import { BreadcrumbJsonLd, Seo } from '@/components/seo'
@@ -18,25 +20,24 @@ const getBentoSize = (index: number): 'large' | 'medium' | 'small' => {
 }
 
 export const WorkScreen: FC = () => {
+	const { t } = useTranslation()
+
 	return (
 		<>
 			<Seo title={pagesSeo.work.title} description={pagesSeo.work.description} keywords={pagesSeo.work.keywords} />
 			<BreadcrumbJsonLd
 				items={[
 					{ name: 'Home', url: '/' },
-					{ name: 'Portfolio', url: '/work' },
+					{ name: t('nav.work'), url: '/work' },
 				]}
 			/>
 
 			<div className='min-h-screen bg-primary'>
 				<PageHeader align='center'>
 					<div className='mx-auto max-w-2xl'>
-						<p className='mb-3 text-sm font-semibold tracking-wider text-brand-400 uppercase'>Portfolio</p>
-						<h1 className='mb-4 text-4xl font-bold text-white md:text-5xl'>My Work</h1>
-						<p className='text-lg text-gray-300'>
-							A collection of projects spanning ecommerce, SaaS, and digital products. Each one built with care from
-							design to deployment.
-						</p>
+						<p className='mb-3 text-sm font-semibold tracking-wider text-brand-400 uppercase'>{t('work.subtitle')}</p>
+						<h1 className='mb-4 text-4xl font-bold text-white md:text-5xl'>{t('work.title')}</h1>
+						<p className='text-lg text-gray-300'>{t('work.description')}</p>
 					</div>
 				</PageHeader>
 

@@ -35,7 +35,7 @@ export const BentoCard: FC<BentoCardProps> = ({
 
 	return (
 		<div
-			className={`group flex flex-col overflow-hidden rounded-2xl border border-secondary bg-white transition-all duration-300 hover:shadow-xl ${
+			className={`group flex flex-col overflow-hidden rounded-2xl border border-secondary bg-primary transition-all duration-300 hover:shadow-xl ${
 				isLarge ? 'md:col-span-2' : ''
 			}`}
 		>
@@ -64,7 +64,7 @@ export const BentoCard: FC<BentoCardProps> = ({
 							className='absolute top-4 right-4 rounded-full bg-white/95 p-2 shadow-sm backdrop-blur-sm transition-transform duration-300 hover:scale-110'
 							aria-label={`Visit ${title}`}
 						>
-							<ArrowUpRight className='size-4 text-gray-700' />
+							<ArrowUpRight className='size-4 text-primary' />
 						</a>
 					)}
 				</div>
@@ -76,10 +76,10 @@ export const BentoCard: FC<BentoCardProps> = ({
 				<span className='mb-1 text-xs font-semibold tracking-wider text-brand-600 uppercase'>{subtitle}</span>
 
 				{/* Title */}
-				<h3 className={`mb-2 font-semibold text-gray-900 ${isLarge ? 'text-xl md:text-2xl' : 'text-lg'}`}>{title}</h3>
+				<h3 className={`mb-2 font-semibold text-primary ${isLarge ? 'text-xl md:text-2xl' : 'text-lg'}`}>{title}</h3>
 
 				{/* Summary */}
-				<p className={`mb-4 text-sm text-gray-600 ${isLarge ? 'line-clamp-3' : 'line-clamp-2'}`}>{summary}</p>
+				<p className={`mb-4 text-sm text-secondary ${isLarge ? 'line-clamp-3' : 'line-clamp-2'}`}>{summary}</p>
 
 				{/* Outcomes */}
 				{outcomes && outcomes.length > 0 && (

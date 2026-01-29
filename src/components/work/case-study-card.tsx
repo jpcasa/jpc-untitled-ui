@@ -66,7 +66,7 @@ export const CaseStudyCard: FC<CaseStudyCardProps> = ({
 			</div>
 
 			{/* Benefits */}
-			<div className='bg-white px-8 py-8'>
+			<div className='bg-primary px-8 py-8'>
 				{outcomes && outcomes.length > 0 && (
 					<div className='mb-6 flex flex-wrap gap-2'>
 						{outcomes.map((outcome, index) => (
@@ -81,10 +81,10 @@ export const CaseStudyCard: FC<CaseStudyCardProps> = ({
 				)}
 				<div className='mb-6 grid gap-4 md:grid-cols-3'>
 					{benefits.map((benefit, index) => (
-						<div key={index} className='rounded-lg bg-gray-50 p-4'>
+						<div key={index} className='rounded-lg bg-secondary p-4'>
 							<div className='mb-2 h-1 w-12 rounded' style={{ backgroundColor: benefitColor }} />
-							<h4 className='mb-2 text-sm font-semibold text-gray-900'>{benefit.label}</h4>
-							<p className='text-xs text-gray-500'>{benefit.description}</p>
+							<h4 className='mb-2 text-sm font-semibold text-primary'>{benefit.label}</h4>
+							<p className='text-xs text-secondary'>{benefit.description}</p>
 						</div>
 					))}
 				</div>

@@ -1,5 +1,7 @@
 import type { FC } from 'react'
 
+import { useTranslation } from 'react-i18next'
+
 import { Button } from '@/components/base/buttons/button'
 import { PersonJsonLd, Seo, WebsiteJsonLd } from '@/components/seo'
 import { pagesSeo } from '@/config/seo-config'
@@ -7,6 +9,7 @@ import profileData from '@/data/profile.json'
 import { useTypewriter } from '@/hooks/use-typewriter'
 
 export const HomeScreen: FC = () => {
+	const { t } = useTranslation()
 	const typedText = useTypewriter({
 		phrases: profileData.typingPhrases,
 		typeSpeed: 70,
@@ -23,23 +26,19 @@ export const HomeScreen: FC = () => {
 				<div className='mb-8 w-full pt-32 text-center lg:mx-auto lg:flex lg:max-w-md lg:items-center lg:pt-0 lg:text-left'>
 					<div>
 						<h1 className="font-['DM_Serif_Display',serif] text-4xl text-brand-800">
-							Hey, I'm JP. An experienced UI/UX Designer and Engineer.{' '}
-							<span className='text-brand-600 underline'>{typedText}</span>
+							{t('home.greeting')} <span className='text-brand-600 underline'>{typedText}</span>
 						</h1>
 
-						<p className='my-8 text-slate-500'>
-							I can build full prototypes in Figma/Framer designed from scratch. Also, I can code them in Vue3/React +
-							Node/Python, so I really bring value to product teams. I love new challenges, gravel cycling and Golf!
-						</p>
+						<p className='my-8 text-secondary'>{t('home.description')}</p>
 
 						<Button href='/about' size='md' color='primary'>
-							Learn More About Me
+							{t('home.cta')}
 						</Button>
 					</div>
 				</div>
 
 				{/* Image Section */}
-				<div className='flex items-center justify-center bg-gray-200 py-12'>
+				<div className='flex items-center justify-center bg-secondary py-12'>
 					<img
 						src='/img/home.webp'
 						alt='JP Casabianca - UI/UX Designer and Fullstack Engineer'

@@ -64,12 +64,12 @@ export const BlogPostCard: FC<BlogPostCardProps> = ({
 					</p>
 					<div className='flex w-full flex-col gap-1'>
 						<LinkWrapper
-							className={`flex justify-between gap-x-4 font-semibold text-gray-900 transition-colors hover:text-brand-600 ${featured ? 'text-2xl' : 'text-lg'}`}
+							className={`flex justify-between gap-x-4 font-semibold text-primary transition-colors hover:text-brand-600 ${featured ? 'text-2xl' : 'text-lg'}`}
 						>
 							{title}
-							<ArrowUpRight className='mt-0.5 size-6 shrink-0 text-gray-400' aria-hidden='true' />
+							<ArrowUpRight className='mt-0.5 size-6 shrink-0 text-secondary' aria-hidden='true' />
 						</LinkWrapper>
-						<p className='line-clamp-2 text-gray-600'>{summary}</p>
+						<p className='line-clamp-2 text-secondary'>{summary}</p>
 					</div>
 				</div>
 
@@ -81,7 +81,7 @@ export const BlogPostCard: FC<BlogPostCardProps> = ({
 					))}
 				</div>
 
-				<p className='text-sm text-gray-500'>{readingTime}</p>
+				<p className='text-sm text-secondary'>{readingTime}</p>
 			</div>
 		</article>
 	)

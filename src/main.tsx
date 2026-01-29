@@ -7,6 +7,8 @@ import { BrowserRouter } from 'react-router'
 import '@/assets/fonts/style.css'
 import { ErrorBoundary } from '@/components/error-boundary'
 import { TopBar } from '@/components/layout/top-bar'
+// Initialize i18n before other imports
+import '@/locales'
 import { RouteProvider } from '@/providers/router-provider'
 import { ThemeProvider } from '@/providers/theme-provider'
 import { AppRoutes } from '@/router'

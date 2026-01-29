@@ -27,11 +27,11 @@ export const ExperienceCard: FC<ExperienceCardProps> = ({
 	className,
 }) => {
 	return (
-		<div className={cx('border-b border-gray-200 pb-8', className)}>
+		<div className={cx('border-b border-secondary pb-8', className)}>
 			<div className='mb-4 flex flex-col gap-2 md:flex-row md:items-start md:justify-between'>
 				<div>
-					<p className='text-lg font-semibold text-gray-900'>{company}</p>
-					<p className='text-sm text-gray-600'>{role}</p>
+					<p className='text-lg font-semibold text-primary'>{company}</p>
+					<p className='text-sm text-secondary'>{role}</p>
 				</div>
 				<div className='flex flex-wrap items-center gap-2'>
 					<Badge color='gray' size='sm'>
@@ -48,7 +48,7 @@ export const ExperienceCard: FC<ExperienceCardProps> = ({
 				</div>
 			</div>
 
-			<p className='mb-4 text-gray-600'>{description}</p>
+			<p className='mb-4 text-secondary'>{description}</p>
 
 			{metrics && metrics.length > 0 && (
 				<div className='mb-4 flex flex-wrap gap-2'>
@@ -63,7 +63,7 @@ export const ExperienceCard: FC<ExperienceCardProps> = ({
 				</div>
 			)}
 
-			<ul className='list-inside list-disc space-y-1 text-sm text-gray-500'>
+			<ul className='list-inside list-disc space-y-1 text-sm text-secondary'>
 				{highlights.map((highlight, index) => (
 					<li key={index}>{highlight}</li>
 				))}

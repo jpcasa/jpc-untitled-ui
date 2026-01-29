@@ -1,0 +1,9 @@
+{
+	"metrics": [
+		{ "id": "experience", "value": "10+", "label": "Years Experience", "icon": "calendar" },
+		{ "id": "products", "value": "10+", "label": "Products Shipped", "icon": "package" },
+		{ "id": "installs", "value": "6000+", "label": "Shopify Installs", "icon": "download" },
+		{ "id": "clients", "value": "20+", "label": "Clients Served", "icon": "users" }
+	],
+	"featuredCaseStudyIds": [4, 5, 2, 1]
+}

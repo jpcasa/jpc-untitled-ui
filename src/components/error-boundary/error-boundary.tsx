@@ -1,10 +1,11 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react'
 
 import { RefreshCw01 } from '@untitledui/icons'
+import { type WithTranslation, withTranslation } from 'react-i18next'
 
 import { Button } from '@/components/base/buttons/button'
 
-interface ErrorBoundaryProps {
+interface ErrorBoundaryProps extends WithTranslation {
 	children: ReactNode
 	fallback?: ReactNode
 }
@@ -14,7 +15,7 @@ interface ErrorBoundaryState {
 	error: Error | null
 }
 
-export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+class ErrorBoundaryBase extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 	constructor(props: ErrorBoundaryProps) {
 		super(props)
 		this.state = { hasError: false, error: null }
@@ -41,13 +42,15 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 	}
 
 	render(): ReactNode {
+		const { t } = this.props
+
 		if (this.state.hasError) {
 			if (this.props.fallback) {
 				return this.props.fallback
 			}
 
 			return (
-				<div className='flex min-h-screen flex-col items-center justify-center bg-gray-50 px-4'>
+				<div className='flex min-h-screen flex-col items-center justify-center bg-secondary px-4'>
 					<div className='mx-auto max-w-md text-center'>
 						<div className='mb-6 inline-flex size-16 items-center justify-center rounded-full bg-error-100'>
 							<svg
@@ -65,24 +68,22 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 							</svg>
 						</div>
 
-						<h1 className='mb-2 text-2xl font-semibold text-gray-900'>Something went wrong</h1>
-						<p className='mb-8 text-gray-600'>
-							We're sorry, but something unexpected happened. Please try again or return to the home page.
-						</p>
+						<h1 className='mb-2 text-2xl font-semibold text-primary'>{t('errors.somethingWrong.title')}</h1>
+						<p className='mb-8 text-secondary'>{t('errors.somethingWrong.description')}</p>
 
 						{import.meta.env.DEV && this.state.error && (
-							<div className='mb-8 rounded-lg bg-gray-100 p-4 text-left'>
-								<p className='mb-1 text-xs font-medium text-gray-500'>Error details (dev only):</p>
+							<div className='mb-8 rounded-lg bg-tertiary p-4 text-left'>
+								<p className='mb-1 text-xs font-medium text-secondary'>Error details (dev only):</p>
 								<code className='text-xs text-error-600'>{this.state.error.message}</code>
 							</div>
 						)}
 
 						<div className='flex flex-col gap-3 sm:flex-row sm:justify-center'>
 							<Button onClick={this.handleRetry} color='primary' iconLeading={RefreshCw01}>
-								Try Again
+								{t('errors.somethingWrong.tryAgain')}
 							</Button>
 							<Button onClick={this.handleGoHome} color='secondary'>
-								Go Home
+								{t('errors.somethingWrong.goHome')}
 							</Button>
 						</div>
 					</div>
@@ -93,3 +94,5 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 		return this.props.children
 	}
 }
+
+export const ErrorBoundary = withTranslation()(ErrorBoundaryBase)

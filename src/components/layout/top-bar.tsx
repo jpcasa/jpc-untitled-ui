@@ -1,19 +1,23 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
-import { Menu01, XClose } from '@untitledui/icons'
+import { Menu01, Moon01, Sun, XClose } from '@untitledui/icons'
+import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 
 import { Logo } from '@/components/application/logo/logo'
 import { Button } from '@/components/base/buttons/button'
-import { AvailabilityStatus } from '@/components/shared'
+import { AvailabilityStatus, LanguageSelector } from '@/components/shared'
 import profileData from '@/data/profile.json'
+import { useTheme } from '@/providers/theme-provider'
 import { routes } from '@/router'
 import { cx } from '@/utils/cx'
 
 const SCROLL_THRESHOLD = 500
 
 export const TopBar = () => {
+	const { t } = useTranslation()
 	const location = useLocation()
+	const { theme, toggleTheme } = useTheme()
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 	const [isScrolled, setIsScrolled] = useState(false)
 	const currentPath = useMemo(() => location.pathname, [location])
@@ -126,7 +130,7 @@ export const TopBar = () => {
 												aria-current={route.path === currentPath ? 'page' : undefined}
 												className={cx(
 													'rounded-md px-2 py-1.5 transition-colors hover:bg-brand-50 hover:text-brand-600',
-													isDarkMode ? 'text-white' : 'text-gray-700',
+													isDarkMode ? 'text-white' : 'text-primary',
 													route.path === currentPath && 'bg-brand-50 text-brand-700'
 												)}
 											>
@@ -138,7 +142,7 @@ export const TopBar = () => {
 												onClick={route.action}
 												className={cx(
 													'cursor-pointer rounded-md px-2 py-1.5 hover:bg-brand-50 hover:text-brand-700',
-													isDarkMode ? 'text-white' : 'text-gray-700'
+													isDarkMode ? 'text-white' : 'text-primary'
 												)}
 											>
 												{route.label}
@@ -146,6 +150,7 @@ export const TopBar = () => {
 										)}
 									</div>
 								))}
+							<LanguageSelector isDarkMode={isDarkMode} />
 						</nav>
 					</div>
 
@@ -156,11 +161,23 @@ export const TopBar = () => {
 							status={profileData.availability.status}
 							className='hidden lg:flex'
 						/>
+						<Button
+							size='xs'
+							color='tertiary'
+							onClick={toggleTheme}
+							aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+						>
+							{theme === 'light' ? (
+								<Moon01 className='size-4' aria-hidden='true' />
+							) : (
+								<Sun className='size-4' aria-hidden='true' />
+							)}
+						</Button>
 						<Button href='/JP-CV.pdf' download='JP-Casabianca-CV.pdf' size='xs' color='secondary'>
-							CV
+							{t('nav.cv')}
 						</Button>
 						<Button href={`mailto:${profileData.contact.email}`} size='xs'>
-							Let's Connect
+							{t('nav.letsConnect')}
 						</Button>
 					</div>
 
@@ -201,7 +218,7 @@ export const TopBar = () => {
 				aria-modal='true'
 				aria-label='Mobile navigation menu'
 				className={cx(
-					'fixed inset-y-0 right-0 z-20 w-full max-w-xs bg-white shadow-xl transition-transform duration-300 md:hidden',
+					'fixed inset-y-0 right-0 z-20 w-full max-w-xs bg-primary shadow-xl transition-transform duration-300 md:hidden',
 					mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
 				)}
 			>
@@ -231,7 +248,7 @@ export const TopBar = () => {
 										aria-current={route.path === currentPath ? 'page' : undefined}
 										className={cx(
 											'block rounded-md px-3 py-2.5 text-base font-medium transition-colors',
-											route.path === currentPath ? 'bg-brand-50 text-brand-700' : 'text-gray-700 hover:bg-gray-50'
+											route.path === currentPath ? 'bg-brand-50 text-brand-700' : 'text-primary hover:bg-secondary'
 										)}
 									>
 										{route.label}
@@ -243,7 +260,7 @@ export const TopBar = () => {
 											route.action?.()
 											setMobileMenuOpen(false)
 										}}
-										className='block w-full cursor-pointer rounded-md px-3 py-2.5 text-left text-base font-medium text-gray-700 hover:bg-gray-50'
+										className='block w-full cursor-pointer rounded-md px-3 py-2.5 text-left text-base font-medium text-primary hover:bg-secondary'
 									>
 										{route.label}
 									</button>
@@ -258,14 +275,34 @@ export const TopBar = () => {
 						status={profileData.availability.status}
 						className='mb-4 justify-center'
 					/>
+					<LanguageSelector className='mb-4 justify-center' />
 				</div>
 
 				<div className='flex flex-col gap-2 px-4'>
+					<Button
+						size='md'
+						color='tertiary'
+						onClick={toggleTheme}
+						aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+						className='w-full'
+					>
+						{theme === 'light' ? (
+							<>
+								<Moon01 className='size-5' aria-hidden='true' />
+								<span>{t('nav.darkMode')}</span>
+							</>
+						) : (
+							<>
+								<Sun className='size-5' aria-hidden='true' />
+								<span>{t('nav.lightMode')}</span>
+							</>
+						)}
+					</Button>
 					<Button href='/JP-CV.pdf' download='JP-Casabianca-CV.pdf' size='md' color='secondary' className='w-full'>
-						CV
+						{t('nav.cv')}
 					</Button>
 					<Button href={`mailto:${profileData.contact.email}`} size='md' className='w-full'>
-						Let's Connect
+						{t('nav.letsConnect')}
 					</Button>
 				</div>
 			</div>

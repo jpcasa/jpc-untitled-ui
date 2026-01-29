@@ -1,0 +1,285 @@
+{
+	"nav": {
+		"about": "About",
+		"work": "Work",
+		"blog": "Blog",
+		"resources": "Resources",
+		"creativeProcess": "Creative Process",
+		"play": "Play",
+		"cv": "CV",
+		"letsConnect": "Let's Connect",
+		"darkMode": "Dark Mode",
+		"lightMode": "Light Mode"
+	},
+	"home": {
+		"greeting": "Hey, I'm JP. An experienced UI/UX Designer and Engineer.",
+		"description": "I can build full prototypes in Figma/Framer designed from scratch. Also, I can code them in Vue3/React + Node/Python, so I really bring value to product teams. I love new challenges, gravel cycling and Golf!",
+		"cta": "Learn More About Me"
+	},
+	"about": {
+		"title": "About",
+		"heroTitle": "Hey, I'm JP. An experienced UI/UX Designer and Fullstack Engineer.",
+		"heroDescription": "I can build full prototypes in Figma/Framer designed from scratch. Also, I can code them in Vue3/React + Node/Python, so I really bring value to product teams. I love new challenges, Golf and Gravel Cycling!",
+		"skills": {
+			"title": "My Skills",
+			"description": "You can find out what tools, apps, and services I use in my day-to-day work and life. Find design, frontend, backend, and marketing skills."
+		},
+		"experience": {
+			"title": "My Experience",
+			"subtitle": "The companies I have worked with",
+			"description": "You can find out what experiences I have had in my career. I have worked with a lot of companies and startups as a designer, developer, and advisor.",
+			"resume": "Resume",
+			"resumeDescription": "Download a copy of my latest resume in PDF",
+			"downloadCv": "Download CV"
+		},
+		"apps": {
+			"title": "My Usual Apps",
+			"subtitle": "Tools I use daily",
+			"description": "These are the apps and tools I use on a daily basis to design, code, and stay productive."
+		},
+		"testimonials": {
+			"title": "What People are Saying...",
+			"subtitle": "Some honest testimonials from people I have worked with",
+			"description": "These are some of the testimonials I have received from people I have worked with. I have worked with a lot of companies and startups as a designer, developer, and advisor."
+		},
+		"highlights": {
+			"title": "Impact at a Glance",
+			"subtitle": "Key Achievements",
+			"description": "Numbers that demonstrate real-world impact and experience.",
+			"metrics": {
+				"experience": "Years Experience",
+				"products": "Products Shipped",
+				"installs": "Shopify Installs",
+				"clients": "Clients Served"
+			}
+		},
+		"featuredWork": {
+			"title": "Featured Work",
+			"subtitle": "Selected Projects",
+			"description": "A selection of my most impactful projects with measurable outcomes.",
+			"viewAll": "View All Projects"
+		},
+		"education": {
+			"title": "Education & Certifications",
+			"subtitle": "Background",
+			"description": "My educational foundation and professional credentials."
+		},
+		"languages": {
+			"title": "Languages",
+			"subtitle": "Communication",
+			"description": "Languages I speak for global collaboration.",
+			"levels": {
+				"native": "Native",
+				"beginner": "Beginner"
+			}
+		},
+		"softSkills": {
+			"title": "Soft Skills",
+			"subtitle": "What I Bring to Teams",
+			"description": "Personal qualities that make collaboration effective."
+		},
+		"cta": {
+			"title": "Ready to work together?",
+			"description": "I'm currently open to new opportunities. Let's discuss how I can bring value to your team.",
+			"viewWork": "View My Work",
+			"downloadCv": "Download CV",
+			"connect": "Let's Connect"
+		}
+	},
+	"work": {
+		"title": "My Work",
+		"subtitle": "Selected Projects",
+		"description": "A collection of projects I've worked on, from startups to enterprise solutions."
+	},
+	"blog": {
+		"title": "Blog",
+		"subtitle": "Thoughts & Insights",
+		"description": "Articles about design, development, and the creative process.",
+		"viewAll": "View all posts on Medium",
+		"latestPosts": "Latest blog posts",
+		"moreInsights": "More insights on design, development, and the creative process.",
+		"viewAllPosts": "View all posts",
+		"backToBlog": "Back to Blog",
+		"published": "Published"
+	},
+	"resources": {
+		"title": "Resources",
+		"subtitle": "Tools & Resources",
+		"description": "A curated collection of tools, resources, and references I find useful.",
+		"filters": {
+			"all": "All",
+			"design": "Design",
+			"engineering": "Engineering",
+			"productivity": "Productivity",
+			"marketing": "Marketing"
+		}
+	},
+	"creativeProcess": {
+		"title": "My Creative Process",
+		"subtitle": "Where Design Meets Engineering",
+		"description": "A systematic approach to solving complex problems through human-centered design and clean, maintainable code. From discovery to delivery, I ensure every step creates real value.",
+		"metrics": {
+			"projects": "50+ Projects",
+			"experience": "10+ Years",
+			"approach": "Design + Code"
+		},
+		"designSection": {
+			"title": "Human-Centered Design",
+			"subtitle": "The Design Process",
+			"description": "Every great product starts with understanding people. I follow a proven design thinking methodology that puts users at the center of every decision, ensuring solutions that truly resonate."
+		},
+		"designSteps": {
+			"empathize": {
+				"title": "Empathize",
+				"description": "Deep dive into user needs through interviews, observations, and research. Building genuine understanding is the foundation of meaningful design.",
+				"deliverable": "User Personas & Journey Maps"
+			},
+			"define": {
+				"title": "Define",
+				"description": "Synthesize research into clear problem statements. Being crystal clear about the challenge is often harder than solving it.",
+				"deliverable": "Problem Statement & Success Metrics"
+			},
+			"ideate": {
+				"title": "Ideate",
+				"description": "Explore creative solutions without constraints. The best ideas often come from unexpected combinations and bold thinking.",
+				"deliverable": "Wireframes & Concept Sketches"
+			},
+			"prototype": {
+				"title": "Prototype",
+				"description": "Build to learn, not to ship. High-fidelity prototypes in Figma let us test ideas before writing a single line of code.",
+				"deliverable": "Interactive Prototypes & Design Systems"
+			},
+			"test": {
+				"title": "Test",
+				"description": "Validate assumptions with real users. Usability testing reveals insights that intuition alone cannot provide.",
+				"deliverable": "Usability Reports & Insights"
+			},
+			"iterate": {
+				"title": "Iterate",
+				"description": "Refine relentlessly based on feedback. Great design is never finished—it evolves with user needs and business goals.",
+				"deliverable": "Polished Designs & Handoff Specs"
+			}
+		},
+		"approach": {
+			"title": "What Sets Me Apart",
+			"subtitle": "My Approach",
+			"description": "A unique combination of skills and mindset that drives exceptional results.",
+			"designCode": {
+				"title": "Design + Code",
+				"description": "I bridge the gap between design and development. No more lost-in-translation moments—I ensure pixel-perfect implementation because I speak both languages fluently."
+			},
+			"userCentered": {
+				"title": "User-Centered",
+				"description": "Every decision is backed by user research and data. I don't just make things pretty—I make them work for the people who use them."
+			},
+			"iterative": {
+				"title": "Iterative Mindset",
+				"description": "Continuous improvement through rapid feedback loops. I ship fast, learn faster, and always push for better outcomes."
+			}
+		},
+		"codeSection": {
+			"title": "Clean, Scalable Code",
+			"subtitle": "The Development Process",
+			"description": "I write code that's not just functional, but maintainable. Modern tech stacks, comprehensive testing, and best practices ensure your product scales with confidence.",
+			"techStack": "React, Vue 3, TypeScript, Tailwind CSS, Node.js, Python",
+			"principles": {
+				"title": "Development Principles",
+				"items": {
+					"typescript": "100% TypeScript for type safety",
+					"testing": "Comprehensive test coverage",
+					"performance": "Performance-first architecture",
+					"accessibility": "Accessibility built-in, not bolted-on"
+				}
+			}
+		},
+		"results": {
+			"title": "Real Results",
+			"subtitle": "Impact Driven",
+			"description": "Numbers that reflect the value I bring to teams and products.",
+			"metrics": {
+				"handoff": {
+					"value": "40%",
+					"label": "Faster Design Handoff"
+				},
+				"teams": {
+					"value": "5+",
+					"label": "Teams Led"
+				},
+				"mvp": {
+					"value": "3mo",
+					"label": "Average MVP Timeline"
+				},
+				"satisfaction": {
+					"value": "100%",
+					"label": "Client Satisfaction"
+				}
+			}
+		},
+		"appsSection": {
+			"title": "Tools of the Trade",
+			"subtitle": "My Daily Stack",
+			"description": "The apps and tools I rely on every day to design, code, and ship great products.",
+			"tabs": {
+				"design": "Design",
+				"code": "Code",
+				"productivity": "Productivity"
+			}
+		},
+		"cta": {
+			"title": "Ready to bring your vision to life?",
+			"description": "Let's create something amazing together. Whether you need design, development, or both—I'm here to help.",
+			"viewWork": "View My Work",
+			"connect": "Let's Connect"
+		}
+	},
+	"footer": {
+		"description": "Hey, I'm JP. An experienced UI/UX Designer and Engineer based in Bogota, Colombia. Working Remotely EST Timezone.",
+		"techStack": {
+			"title": "This Portfolio's Tech Stack",
+			"subtitle": "Built with modern technologies",
+			"viewSource": "View Source Code"
+		},
+		"cta": {
+			"title": "Let's work together",
+			"description": "I'm always open to discussing new projects and opportunities.",
+			"contact": "Contact Me"
+		},
+		"menus": {
+			"mainMenu": "Main Menu",
+			"social": "Social",
+			"more": "More"
+		},
+		"links": {
+			"aboutMe": "About Me",
+			"work": "Work",
+			"process": "Process",
+			"resources": "Resources",
+			"gallery": "Gallery",
+			"blog": "Blog",
+			"downloadCv": "Download CV",
+			"viewSourceCode": "View Source Code",
+			"emailMe": "Email Me"
+		},
+		"copyright": "All rights reserved."
+	},
+	"common": {
+		"learnMore": "Learn More",
+		"viewProject": "View Project",
+		"readMore": "Read More",
+		"contactMe": "Contact Me",
+		"openToWork": "Open to Remote Work (EST)"
+	},
+	"errors": {
+		"notFound": {
+			"title": "Page not found",
+			"description": "Sorry, the page you are looking for doesn't exist or has been moved.",
+			"backHome": "Back to home"
+		},
+		"somethingWrong": {
+			"title": "Something went wrong",
+			"description": "We're sorry, but something unexpected happened. Please try again or return to the home page.",
+			"tryAgain": "Try Again",
+			"goHome": "Go Home"
+		}
+	}
+}

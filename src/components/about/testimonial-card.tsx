@@ -16,16 +16,16 @@ interface TestimonialCardProps {
 
 export const TestimonialCard: FC<TestimonialCardProps> = ({ quote, name, company, role, rating, image, className }) => {
 	return (
-		<div className={cx('flex h-full flex-col rounded-2xl bg-white p-6 shadow-lg', className)}>
+		<div className={cx('flex h-full flex-col rounded-2xl bg-primary p-6 shadow-lg', className)}>
 			<RatingStars rating={rating} className='mb-4' />
 
-			<blockquote className='mb-6 flex-1 text-gray-600'>"{quote}"</blockquote>
+			<blockquote className='mb-6 flex-1 text-secondary'>"{quote}"</blockquote>
 
 			<div className='flex items-center gap-3'>
 				<Avatar src={image} alt={name} size='lg' />
 				<div>
-					<p className='font-semibold text-gray-900'>{name}</p>
-					<p className='text-sm text-gray-500'>
+					<p className='font-semibold text-primary'>{name}</p>
+					<p className='text-sm text-secondary'>
 						{role} @ {company}
 					</p>
 				</div>

@@ -1,6 +1,7 @@
 import type { FC } from 'react'
 
 import { ArrowLeft } from '@untitledui/icons'
+import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router'
 
 import { Badge, type BadgeColor } from '@/components/base/badges/badges'
@@ -41,23 +42,23 @@ const ContentRenderer: FC<{ content: ContentBlock[] }> = ({ content }) => {
 				switch (block.type) {
 					case 'heading':
 						return (
-							<h2 key={index} className='mt-8 mb-4 text-2xl font-semibold text-gray-900'>
+							<h2 key={index} className='mt-8 mb-4 text-2xl font-semibold text-primary'>
 								{block.text}
 							</h2>
 						)
 					case 'paragraph':
 						return (
-							<p key={index} className='mb-4 text-lg leading-relaxed text-gray-600'>
+							<p key={index} className='mb-4 text-lg leading-relaxed text-secondary'>
 								{block.text}
 							</p>
 						)
 					case 'quote':
 						return (
 							<figure key={index} className='my-8 border-l-4 border-brand-500 pl-6'>
-								<blockquote className='text-xl text-gray-700 italic'>"{block.text}"</blockquote>
+								<blockquote className='text-xl text-secondary italic'>"{block.text}"</blockquote>
 								<figcaption className='mt-4 flex items-center gap-3'>
 									<div>
-										<p className='font-semibold text-gray-900'>— {block.author}</p>
+										<p className='font-semibold text-primary'>— {block.author}</p>
 									</div>
 								</figcaption>
 							</figure>
@@ -66,14 +67,14 @@ const ContentRenderer: FC<{ content: ContentBlock[] }> = ({ content }) => {
 						return (
 							<figure key={index} className='my-8'>
 								<img src={block.url} alt={block.caption} className='w-full rounded-lg object-cover' />
-								<figcaption className='mt-2 text-center text-sm text-gray-500'>{block.caption}</figcaption>
+								<figcaption className='mt-2 text-center text-sm text-secondary'>{block.caption}</figcaption>
 							</figure>
 						)
 					case 'conclusion':
 						return (
-							<div key={index} className='my-12 rounded-2xl bg-gray-100 p-6 md:p-8'>
-								<h2 className='mb-4 text-xl font-semibold text-gray-900'>{block.title}</h2>
-								<p className='text-lg text-gray-600'>{block.text}</p>
+							<div key={index} className='my-12 rounded-2xl bg-secondary p-6 md:p-8'>
+								<h2 className='mb-4 text-xl font-semibold text-primary'>{block.title}</h2>
+								<p className='text-lg text-secondary'>{block.text}</p>
 							</div>
 						)
 					default:
@@ -85,6 +86,7 @@ const ContentRenderer: FC<{ content: ContentBlock[] }> = ({ content }) => {
 }
 
 export const BlogPostScreen: FC = () => {
+	const { t } = useTranslation()
 	const { id } = useParams<{ id: string }>()
 	const post = blogData.posts.find((p) => p.id === id) as BlogPost | undefined
 	const relatedPosts = blogData.posts.filter((p) => p.id !== id).slice(0, 3)
@@ -93,9 +95,9 @@ export const BlogPostScreen: FC = () => {
 		return (
 			<div className='flex min-h-screen items-center justify-center'>
 				<div className='text-center'>
-					<h1 className='mb-4 text-2xl font-semibold text-gray-900'>Post not found</h1>
+					<h1 className='mb-4 text-2xl font-semibold text-primary'>{t('errors.notFound.title')}</h1>
 					<Link to='/blog' className='text-brand-600 hover:text-brand-700'>
-						Back to Blog
+						{t('blog.backToBlog')}
 					</Link>
 				</div>
 			</div>
@@ -131,21 +133,23 @@ export const BlogPostScreen: FC = () => {
 				]}
 			/>
 
-			<div className='bg-white'>
+			<div className='bg-primary'>
 				{/* Header */}
-				<div className='bg-white pt-24'>
+				<div className='bg-primary pt-24'>
 					<div className='container mx-auto px-4 py-16 md:px-8'>
 						<div className='mx-auto max-w-3xl'>
 							<Link
 								to='/blog'
-								className='mb-8 inline-flex items-center gap-2 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900'
+								className='mb-8 inline-flex items-center gap-2 text-sm font-medium text-secondary transition-colors hover:text-primary'
 							>
 								<ArrowLeft className='size-4' />
-								Back to Blog
+								{t('blog.backToBlog')}
 							</Link>
-							<p className='text-sm font-semibold text-brand-600 md:text-base'>Published {post.publishedAt}</p>
-							<h1 className='mt-3 text-3xl font-semibold text-gray-900 md:text-4xl lg:text-5xl'>{post.title}</h1>
-							<p className='mt-4 text-lg text-gray-600 md:mt-6 md:text-xl'>{post.summary}</p>
+							<p className='text-sm font-semibold text-brand-600 md:text-base'>
+								{t('blog.published')} {post.publishedAt}
+							</p>
+							<h1 className='mt-3 text-3xl font-semibold text-primary md:text-4xl lg:text-5xl'>{post.title}</h1>
+							<p className='mt-4 text-lg text-secondary md:mt-6 md:text-xl'>{post.summary}</p>
 						</div>
 					</div>
 				</div>
@@ -163,7 +167,7 @@ export const BlogPostScreen: FC = () => {
 						<ContentRenderer content={post.content} />
 
 						{/* Author & Tags */}
-						<div className='mt-12 flex flex-col items-start justify-between gap-y-6 border-t border-gray-200 pt-6 md:flex-row'>
+						<div className='mt-12 flex flex-col items-start justify-between gap-y-6 border-t border-secondary pt-6 md:flex-row'>
 							<div className='flex items-center gap-3 md:gap-4'>
 								<img
 									src={blogData.author.avatarUrl}
@@ -171,8 +175,8 @@ export const BlogPostScreen: FC = () => {
 									className='size-12 rounded-full object-cover md:size-14'
 								/>
 								<div>
-									<p className='font-semibold text-gray-900 md:text-lg'>{blogData.author.name}</p>
-									<p className='text-gray-500'>{blogData.author.role}</p>
+									<p className='font-semibold text-primary md:text-lg'>{blogData.author.name}</p>
+									<p className='text-secondary'>{blogData.author.role}</p>
 								</div>
 							</div>
 
@@ -188,20 +192,18 @@ export const BlogPostScreen: FC = () => {
 				</div>
 
 				{/* Related Posts */}
-				<section className='bg-gray-50 py-16 md:py-24'>
+				<section className='bg-secondary py-16 md:py-24'>
 					<div className='container mx-auto px-4 md:px-8'>
 						<div className='flex flex-col items-start justify-between lg:flex-row'>
 							<div className='max-w-3xl'>
-								<p className='text-sm font-semibold text-brand-600 md:text-base'>Our blog</p>
-								<h2 className='mt-3 text-2xl font-semibold text-gray-900 md:text-3xl'>Latest blog posts</h2>
-								<p className='mt-4 text-lg text-gray-600'>
-									More insights on design, development, and the creative process.
-								</p>
+								<p className='text-sm font-semibold text-brand-600 md:text-base'>{t('nav.blog')}</p>
+								<h2 className='mt-3 text-2xl font-semibold text-primary md:text-3xl'>{t('blog.latestPosts')}</h2>
+								<p className='mt-4 text-lg text-secondary'>{t('blog.moreInsights')}</p>
 							</div>
 
 							<div className='mt-6 lg:mt-0'>
 								<Button href='/blog' color='secondary' size='lg'>
-									View all posts
+									{t('blog.viewAllPosts')}
 								</Button>
 							</div>
 						</div>

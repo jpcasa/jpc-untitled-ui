@@ -17,7 +17,7 @@ export const OptimizedImage: FC<OptimizedImageProps> = ({
 	alt,
 	className,
 	showPlaceholder = true,
-	placeholderClass = 'bg-gray-200',
+	placeholderClass = 'bg-tertiary',
 	aspectRatio,
 	onLoad,
 	...props
@@ -47,8 +47,8 @@ export const OptimizedImage: FC<OptimizedImageProps> = ({
 
 			{/* Error state */}
 			{hasError && (
-				<div className='absolute inset-0 flex items-center justify-center bg-gray-100'>
-					<svg className='size-8 text-gray-400' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+				<div className='absolute inset-0 flex items-center justify-center bg-secondary'>
+					<svg className='size-8 text-tertiary' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
 						<path
 							strokeLinecap='round'
 							strokeLinejoin='round'
