@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter } from 'react-router'
 
+import '@/assets/fonts/style.css'
 import { ErrorBoundary } from '@/components/error-boundary'
 import { TopBar } from '@/components/layout/top-bar'
 import { RouteProvider } from '@/providers/router-provider'

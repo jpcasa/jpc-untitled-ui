@@ -2,6 +2,7 @@ import type { FC } from 'react'
 
 import { BlogPostCard } from '@/components/blog'
 import { Footer } from '@/components/layout/footer'
+import { PageHeader } from '@/components/layout/page-header'
 import { BreadcrumbJsonLd, Seo } from '@/components/seo'
 import { pagesSeo } from '@/config/seo-config'
 import blogData from '@/data/blog.json'
@@ -21,16 +22,13 @@ export const BlogScreen: FC = () => {
 			/>
 
 			<div className='bg-gray-50'>
-				{/* Header Section */}
-				<section className='bg-gray-900 py-16 pt-32'>
-					<div className='container mx-auto px-4 text-center'>
-						<div className='mx-auto max-w-2xl'>
-							<p className='mb-3 font-medium text-brand-400'>{blogData.header.subtitle}</p>
-							<h1 className='mb-6 text-4xl font-semibold text-white md:text-5xl'>{blogData.header.title}</h1>
-							<p className='text-gray-300'>{blogData.header.description}</p>
-						</div>
+				<PageHeader align='center'>
+					<div className='mx-auto max-w-2xl'>
+						<p className='mb-3 font-medium text-brand-400'>{blogData.header.subtitle}</p>
+						<h1 className='mb-6 text-4xl font-semibold text-white md:text-5xl'>{blogData.header.title}</h1>
+						<p className='text-gray-300'>{blogData.header.description}</p>
 					</div>
-				</section>
+				</PageHeader>
 
 				{/* Blog Posts */}
 				<main className='container mx-auto px-4 py-12 md:py-16'>

@@ -47,10 +47,7 @@ export const AboutScreen: FC = () => {
 
 			<div className='bg-gray-100'>
 				{/* Hero Section */}
-				<section
-					className='bg-cover bg-center pt-12 pb-24 lg:pb-48'
-					style={{ backgroundImage: "url('/img/about-bg.png')" }}
-				>
+				<section className='bg-cover pt-16 pb-8' style={{ backgroundImage: "url('/img/about-bg.png')" }}>
 					<div className='container mx-auto px-4'>
 						<div className='gap-8 pt-12 lg:grid lg:grid-cols-2'>
 							<div className='text-center lg:pl-8 lg:text-left'>
@@ -70,22 +67,16 @@ export const AboutScreen: FC = () => {
 							</div>
 
 							<div className='mt-12 flex items-end justify-center lg:mt-0'>
-								<img src='/img/about-2.webp' alt='JP Casabianca' className='max-w-xs rounded-lg md:max-w-sm' />
+								<img src='/img/about-2.webp' alt='JP Casabianca' className='max-w-md rounded-lg md:max-w-lg' />
 							</div>
 						</div>
-					</div>
-				</section>
-
-				{/* Logos Section */}
-				<section className='container mx-auto px-4 py-12'>
-					<div className='mx-auto max-w-sm pb-12'>
-						<img src='/img/logos.webp' alt='Tech Stack Logos' className='w-full' />
 					</div>
 				</section>
 
 				{/* Skills Section */}
 				<section className='container mx-auto px-4 pb-16'>
 					<SectionHeader
+						title='My Skills'
 						description='You can find out what tools, apps, and services I use in my day-to-day work and life. Find design, frontend, backend, and marketing skills.'
 						align='center'
 					/>
@@ -177,18 +168,14 @@ export const AboutScreen: FC = () => {
 				</section>
 
 				{/* My Usual Apps Section */}
-				<section className='py-16'>
-					<div className='container mx-auto px-4'>
+				<section className='pt-20 pb-12'>
+					<div className='container-sm'>
 						<SectionHeader title={appsData.title} subtitle={appsData.subtitle} description={appsData.description} />
 
-						<div className='mx-auto grid max-w-4xl grid-cols-6 gap-4 md:grid-cols-9'>
+						<div className='mb-20 grid grid-cols-4 justify-center gap-6 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-9'>
 							{appsData.apps.map((app, index) => (
-								<div key={index} className='flex items-center justify-center'>
-									<img
-										src={app.icon}
-										alt={app.name}
-										className='size-12 rounded-xl shadow-sm transition-transform hover:scale-110 md:size-16'
-									/>
+								<div key={index} className='text-center'>
+									<img src={app.icon} alt={app.name} className='mx-auto h-12 w-auto' />
 								</div>
 							))}
 						</div>
@@ -196,8 +183,8 @@ export const AboutScreen: FC = () => {
 				</section>
 
 				{/* Testimonials Section */}
-				<section className='bg-white py-16'>
-					<div className='container mx-auto px-4'>
+				<section className='bg-white py-32'>
+					<div className='container'>
 						<SectionHeader
 							title='What People are Saying...'
 							subtitle='Some honest testimonials from people I have worked with'

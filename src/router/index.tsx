@@ -49,7 +49,6 @@ export const routes = [
 				<WorkScreen />
 			</LazyPage>
 		),
-		darkTopBar: true,
 	},
 	{
 		path: '/creative-process',

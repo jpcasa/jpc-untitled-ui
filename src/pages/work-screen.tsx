@@ -1,11 +1,21 @@
 import type { FC } from 'react'
 
-import { SectionHeader } from '@/components/about'
 import { Footer } from '@/components/layout/footer'
+import { PageHeader } from '@/components/layout/page-header'
 import { BreadcrumbJsonLd, Seo } from '@/components/seo'
-import { CaseStudyCard } from '@/components/work'
+import { BentoCard } from '@/components/work'
 import { pagesSeo } from '@/config/seo-config'
 import caseStudiesData from '@/data/case-studies.json'
+
+// Define the bento grid layout pattern
+// Each row must sum to 3 columns: large(2) + medium(1) = 3, or medium(1) x 3 = 3
+const getBentoSize = (index: number): 'large' | 'medium' | 'small' => {
+	// Row 1: large + medium = 3
+	// Row 2: medium + medium + medium = 3
+	// Row 3: large + medium = 3
+	const pattern = ['large', 'medium', 'medium', 'medium', 'medium', 'large', 'medium'] as const
+	return pattern[index % pattern.length]
+}
 
 export const WorkScreen: FC = () => {
 	return (
@@ -18,42 +28,35 @@ export const WorkScreen: FC = () => {
 				]}
 			/>
 
-			<div className='min-h-screen bg-gray-100'>
-				{/* Header */}
-				<section className='bg-gray-900 py-16 pt-32'>
-					<div className='container mx-auto px-4'>
-						<SectionHeader
-							title='My Work'
-							subtitle='Case Studies'
-							description='A collection of projects I have worked on over the years. From ecommerce platforms to automation tools, I have had the opportunity to work on a variety of projects.'
-							align='center'
-							className='[&_h2]:text-white [&_p]:text-gray-400 [&>p:first-child]:text-brand-400'
-						/>
+			<div className='min-h-screen bg-primary'>
+				<PageHeader align='center'>
+					<div className='mx-auto max-w-2xl'>
+						<p className='mb-3 text-sm font-semibold tracking-wider text-brand-400 uppercase'>Portfolio</p>
+						<h1 className='mb-4 text-4xl font-bold text-white md:text-5xl'>My Work</h1>
+						<p className='text-lg text-gray-300'>
+							A collection of projects spanning ecommerce, SaaS, and digital products. Each one built with care from
+							design to deployment.
+						</p>
 					</div>
-				</section>
+				</PageHeader>
 
-				{/* Case Studies */}
-				<section className='py-16'>
+				{/* Bento Grid */}
+				<section className='pb-24'>
 					<div className='container mx-auto px-4'>
-						<div className='space-y-12'>
-							{caseStudiesData.map((caseStudy) => (
-								<CaseStudyCard
+						<div className='grid gap-4 md:grid-cols-3 md:gap-5'>
+							{caseStudiesData.map((caseStudy, index) => (
+								<BentoCard
 									key={caseStudy.id}
-									slug={caseStudy.slug}
 									title={caseStudy.title}
 									subtitle={caseStudy.subtitle}
 									summary={caseStudy.summary}
 									image={caseStudy.image}
 									logo={caseStudy.logo}
 									bgColor={caseStudy.bgColor}
-									titleColor={caseStudy.titleColor}
-									subtitleColor={caseStudy.subtitleColor}
-									summaryColor={caseStudy.summaryColor}
-									benefitColor={caseStudy.benefitColor}
-									benefits={caseStudy.benefits}
 									tags={caseStudy.tags}
 									link={caseStudy.link}
 									outcomes={caseStudy.outcomes}
+									size={getBentoSize(index)}
 								/>
 							))}
 						</div>

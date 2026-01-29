@@ -65,6 +65,10 @@ input[type='search']::-webkit-search-cancel-button {
 	@apply mx-auto w-full max-w-7xl px-4 md:px-6;
 }
 
+.container-sm {
+	@apply mx-auto w-full max-w-3xl px-4 md:px-6;
+}
+
 /* Accessibility: Respect user preference for reduced motion */
 @media (prefers-reduced-motion: reduce) {
 	*,
@@ -80,4 +84,13 @@ input[type='search']::-webkit-search-cancel-button {
 /* Skip to main content link */
 .skip-to-main {
 	@apply fixed top-4 left-4 z-[9999] -translate-y-full bg-brand-600 px-4 py-2 text-white transition-transform focus:translate-y-0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'DM Serif Display', serif;
 }

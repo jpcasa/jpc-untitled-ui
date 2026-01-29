@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react'
 
 import { Select } from '@/components/base/select/select'
 import { Footer } from '@/components/layout/footer'
+import { PageHeader } from '@/components/layout/page-header'
 import { ResourceCard } from '@/components/resources'
 import { BreadcrumbJsonLd, Seo } from '@/components/seo'
 import { pagesSeo } from '@/config/seo-config'
@@ -40,16 +41,13 @@ export const ResourcesScreen: FC = () => {
 			/>
 
 			<div className='mb-24'>
-				{/* Header Section */}
-				<section className='bg-gray-900 py-16 pt-32'>
-					<div className='container mx-auto px-4 text-center'>
-						<div className='mx-auto max-w-2xl'>
-							<p className='mb-3 font-medium text-brand-400'>{resourcesData.header.subtitle}</p>
-							<h1 className='mb-6 text-4xl font-semibold text-white md:text-5xl'>{resourcesData.header.title}</h1>
-							<span className='text-gray-300'>{resourcesData.header.description}</span>
-						</div>
+				<PageHeader align='center'>
+					<div className='mx-auto max-w-2xl'>
+						<p className='mb-3 font-medium text-brand-400'>{resourcesData.header.subtitle}</p>
+						<h1 className='mb-6 text-4xl font-semibold text-white md:text-5xl'>{resourcesData.header.title}</h1>
+						<p className='text-gray-300'>{resourcesData.header.description}</p>
 					</div>
-				</section>
+				</PageHeader>
 
 				{/* Content Section */}
 				<section className='container mx-auto px-4 py-12'>

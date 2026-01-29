@@ -29,8 +29,8 @@
 		{
 			"title": "More",
 			"items": [
-				{ "name": "Download CV", "link": "/PDF/CV_2023.pdf", "local": false },
-				{ "name": "Privacy Policy", "link": "/privacy-policy", "local": true },
+				{ "name": "Download CV", "link": "/JP-CV.pdf", "local": false },
+				{ "name": "View Source Code", "link": "https://github.com/jpcasa/jpc-untitled-ui", "local": false },
 				{ "name": "Email Me", "link": "mailto:hola@jpcasabianca.com", "local": false },
 				{ "name": "WhatsApp", "link": "https://wa.me/573028608427", "local": false }
 			]

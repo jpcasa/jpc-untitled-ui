@@ -1,6 +1,6 @@
 # JP Casabianca Portfolio
 
-![CI](https://github.com/jpcasabianca/jpc-untitled-ui/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/jpcasa/jpc-untitled-ui/actions/workflows/ci.yml/badge.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1-06B6D4?logo=tailwindcss&logoColor=white)
