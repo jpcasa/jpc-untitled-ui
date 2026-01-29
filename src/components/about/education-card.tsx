@@ -17,13 +17,20 @@ interface EducationCardProps {
 
 export const EducationCard: FC<EducationCardProps> = ({ institution, degree, period, gpa, logo, className }) => {
 	return (
-		<div className={cx('flex items-center gap-4 rounded-xl border border-secondary bg-primary p-4', className)}>
-			{logo ? (
-				<img src={logo} alt={`${institution} logo`} className='size-12 rounded-lg object-contain' />
-			) : (
-				<FeaturedIcon icon={GraduationHat02} size='lg' color='brand' theme='light' />
+		<div
+			className={cx(
+				'flex flex-col gap-4 rounded-xl border border-secondary bg-primary p-4 sm:flex-row sm:items-center',
+				className
 			)}
-			<div className='flex-1'>
+		>
+			<div className='shrink-0'>
+				{logo ? (
+					<img src={logo} alt={`${institution} logo`} className='size-12 rounded-lg object-contain' />
+				) : (
+					<FeaturedIcon icon={GraduationHat02} size='lg' color='brand' theme='light' />
+				)}
+			</div>
+			<div className='min-w-0 flex-1'>
 				<h4 className='font-semibold text-primary'>{institution}</h4>
 				<p className='text-sm text-secondary'>{degree}</p>
 				<div className='mt-2 flex flex-wrap items-center gap-2'>

@@ -25,17 +25,19 @@ export const CertificationCard: FC<CertificationCardProps> = ({
 	const content = (
 		<div
 			className={cx(
-				'flex items-center gap-4 rounded-xl border border-secondary bg-primary p-4 transition-all',
+				'flex flex-col gap-4 rounded-xl border border-secondary bg-primary p-4 transition-all sm:flex-row sm:items-center',
 				credentialUrl && 'hover:border-brand-200 hover:shadow-md dark:hover:border-brand-800',
 				className
 			)}
 		>
-			{icon ? (
-				<img src={icon} alt={`${issuer} logo`} className='size-12 rounded-lg object-contain' />
-			) : (
-				<FeaturedIcon icon={Award05} size='lg' color='brand' theme='light' />
-			)}
-			<div className='flex-1'>
+			<div className='shrink-0'>
+				{icon ? (
+					<img src={icon} alt={`${issuer} logo`} className='size-12 rounded-lg object-contain' />
+				) : (
+					<FeaturedIcon icon={Award05} size='lg' color='brand' theme='light' />
+				)}
+			</div>
+			<div className='min-w-0 flex-1'>
 				<h4 className='font-semibold text-primary'>{name}</h4>
 				<p className='text-sm text-secondary'>
 					{issuer} &middot; {date}

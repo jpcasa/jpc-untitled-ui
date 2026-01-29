@@ -83,7 +83,7 @@ export const AboutScreen: FC = () => {
 							<div className='text-center lg:pl-8 lg:text-left'>
 								{/* Availability Badge */}
 								{profileData.availability.isAvailable && (
-									<div className='flex gap-2'>
+									<div className='flex flex-wrap justify-center gap-2 lg:justify-start'>
 										<Badge type='pill-color' color='success' size='md' className='mb-4'>
 											{t('common.openToWork')}
 										</Badge>
@@ -105,7 +105,11 @@ export const AboutScreen: FC = () => {
 							</div>
 
 							<div className='mt-12 flex items-end justify-center lg:mt-0'>
-								<img src='/img/about-2.webp' alt='JP Casabianca' className='max-w-md rounded-lg md:max-w-lg' />
+								<img
+									src='/img/about-2.webp'
+									alt='JP Casabianca'
+									className='w-full max-w-xs rounded-lg sm:max-w-sm md:max-w-md lg:max-w-lg'
+								/>
 							</div>
 						</div>
 					</div>
@@ -180,7 +184,7 @@ export const AboutScreen: FC = () => {
 					<SectionHeader title={t('about.skills.title')} description={t('about.skills.description')} align='center' />
 
 					<Tabs defaultSelectedKey='Design'>
-						<div className='flex justify-center pb-8'>
+						<div className='-mx-4 flex justify-center overflow-x-auto px-4 pb-8'>
 							<Tabs.List
 								type='button-gray'
 								size='md'
@@ -190,9 +194,9 @@ export const AboutScreen: FC = () => {
 
 						{skillsData.categories.map((category) => (
 							<Tabs.Panel key={category.name} id={category.name}>
-								<div className='mx-auto max-w-4xl rounded-2xl bg-primary p-8 shadow-sm'>
+								<div className='mx-auto max-w-4xl rounded-2xl bg-primary p-4 shadow-sm sm:p-6 md:p-8'>
 									<ResponsiveContainer width='100%' height={category.items.length * 50 + 40}>
-										<BarChart data={category.items} layout='vertical' margin={{ left: 20, right: 30, bottom: 20 }}>
+										<BarChart data={category.items} layout='vertical' margin={{ left: 0, right: 20, bottom: 20 }}>
 											<CartesianGrid strokeDasharray='3 3' horizontal={false} stroke='#e5e7eb' />
 											<XAxis
 												type='number'
@@ -205,12 +209,12 @@ export const AboutScreen: FC = () => {
 											<YAxis
 												type='category'
 												dataKey='name'
-												width={100}
-												tick={{ fill: '#374151', fontSize: 14 }}
+												width={80}
+												tick={{ fill: '#374151', fontSize: 12 }}
 												axisLine={false}
 												tickLine={false}
 											/>
-											<Bar dataKey='level' radius={[0, 6, 6, 0]} barSize={24}>
+											<Bar dataKey='level' radius={[0, 6, 6, 0]} barSize={20}>
 												{category.items.map((_, index) => (
 													<Cell key={index} fill={CHART_COLORS[category.color] || '#6b7280'} />
 												))}
