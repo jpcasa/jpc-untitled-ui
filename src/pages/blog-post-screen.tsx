@@ -6,7 +6,7 @@ import { Link, useParams } from 'react-router'
 
 import { Badge, type BadgeColor } from '@/components/base/badges/badges'
 import { Button } from '@/components/base/buttons/button'
-import { BlogPostCard } from '@/components/blog'
+import { BlogPostCard, CodeBlock } from '@/components/blog'
 import { Footer } from '@/components/layout/footer'
 import { BlogPostJsonLd, BreadcrumbJsonLd, Seo } from '@/components/seo'
 import { getCanonicalUrl } from '@/config/seo-config'
@@ -18,6 +18,7 @@ type ContentBlock =
 	| { type: 'quote'; text: string; author: string }
 	| { type: 'image'; url: string; caption: string }
 	| { type: 'conclusion'; title: string; text: string }
+	| { type: 'code'; code: string; language: string; filename?: string; highlightLines?: number[] }
 
 interface BlogPost {
 	id: string
@@ -76,6 +77,16 @@ const ContentRenderer: FC<{ content: ContentBlock[] }> = ({ content }) => {
 								<h2 className='mb-4 text-xl font-semibold text-primary'>{block.title}</h2>
 								<p className='text-lg text-secondary'>{block.text}</p>
 							</div>
+						)
+					case 'code':
+						return (
+							<CodeBlock
+								key={index}
+								code={block.code}
+								language={block.language}
+								filename={block.filename}
+								highlightLines={block.highlightLines}
+							/>
 						)
 					default:
 						return null

@@ -408,6 +408,829 @@
 					"text": "Remote work offers incredible flexibility and focus time, but it requires discipline and intentionality. Create systems that work for you, invest in your workspace, and prioritize connection with your team. Done well, remote design work can be more productive and fulfilling than traditional office work."
 				}
 			]
+		},
+		{
+			"id": "7",
+			"title": "Building a Reusable Toast Notification System in React",
+			"summary": "A step-by-step guide to creating an accessible, animated toast notification component using React, TypeScript, and Tailwind CSS.",
+			"thumbnailUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+			"heroImageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80",
+			"href": "/blog/7",
+			"category": "Engineering",
+			"author": "JP Casabianca",
+			"publishedAt": "Feb 1, 2024",
+			"readingTime": "12 min read",
+			"tags": [
+				{ "name": "React", "color": "blue" },
+				{ "name": "TypeScript", "color": "success" },
+				{ "name": "Accessibility", "color": "indigo" }
+			],
+			"content": [
+				{
+					"type": "heading",
+					"text": "Why Build Your Own?"
+				},
+				{
+					"type": "paragraph",
+					"text": "Toast notifications are ubiquitous in modern web applications. While libraries like react-hot-toast and sonner are excellent, building your own teaches valuable lessons about component architecture, accessibility, and animation. Plus, you get complete control over styling and behavior."
+				},
+				{
+					"type": "paragraph",
+					"text": "In this tutorial, we will build a production-ready toast system from scratch. By the end, you will have a reusable component that supports multiple toast types, animations, and proper accessibility."
+				},
+				{
+					"type": "heading",
+					"text": "Defining the Types"
+				},
+				{
+					"type": "paragraph",
+					"text": "Let us start by defining our TypeScript interfaces. Good types serve as documentation and prevent bugs before they happen."
+				},
+				{
+					"type": "code",
+					"language": "typescript",
+					"filename": "types.ts",
+					"code": "export interface Toast {\n  id: string\n  message: string\n  type: 'success' | 'error' | 'warning' | 'info'\n  duration?: number\n}\n\nexport interface ToastContextValue {\n  toasts: Toast[]\n  addToast: (toast: Omit<Toast, 'id'>) => void\n  removeToast: (id: string) => void\n}"
+				},
+				{
+					"type": "heading",
+					"text": "The Context Provider"
+				},
+				{
+					"type": "paragraph",
+					"text": "We will use React Context to manage toast state globally. This allows any component in the tree to trigger notifications without prop drilling."
+				},
+				{
+					"type": "code",
+					"language": "tsx",
+					"filename": "ToastProvider.tsx",
+					"code": "import { createContext, useCallback, useState, type FC, type ReactNode } from 'react'\nimport { ToastContainer } from './ToastContainer'\nimport type { Toast, ToastContextValue } from './types'\n\nexport const ToastContext = createContext<ToastContextValue | null>(null)\n\nexport const ToastProvider: FC<{ children: ReactNode }> = ({ children }) => {\n  const [toasts, setToasts] = useState<Toast[]>([])\n\n  const addToast = useCallback((toast: Omit<Toast, 'id'>) => {\n    const id = crypto.randomUUID()\n    setToasts((prev) => [...prev, { ...toast, id }])\n    \n    // Auto-dismiss after duration\n    setTimeout(() => {\n      setToasts((prev) => prev.filter((t) => t.id !== id))\n    }, toast.duration ?? 5000)\n  }, [])\n\n  const removeToast = useCallback((id: string) => {\n    setToasts((prev) => prev.filter((t) => t.id !== id))\n  }, [])\n\n  return (\n    <ToastContext.Provider value={{ toasts, addToast, removeToast }}>\n      {children}\n      <ToastContainer />\n    </ToastContext.Provider>\n  )\n}"
+				},
+				{
+					"type": "heading",
+					"text": "The Toast Component"
+				},
+				{
+					"type": "paragraph",
+					"text": "Each toast needs visual styling based on its type and an accessible structure. We use role='alert' for important messages and include a close button for user control."
+				},
+				{
+					"type": "code",
+					"language": "tsx",
+					"filename": "Toast.tsx",
+					"code": "import { X } from '@untitledui/icons'\nimport type { FC } from 'react'\nimport type { Toast as ToastType } from './types'\n\nconst styles = {\n  success: 'bg-success-50 border-success-200 text-success-800',\n  error: 'bg-error-50 border-error-200 text-error-800',\n  warning: 'bg-warning-50 border-warning-200 text-warning-800',\n  info: 'bg-blue-50 border-blue-200 text-blue-800',\n}\n\nexport const Toast: FC<{ toast: ToastType; onClose: () => void }> = ({ toast, onClose }) => (\n  <div\n    role=\"alert\"\n    className={`flex items-center gap-3 rounded-lg border px-4 py-3 shadow-lg ${styles[toast.type]}`}\n  >\n    <p className=\"flex-1 text-sm font-medium\">{toast.message}</p>\n    <button\n      onClick={onClose}\n      className=\"rounded p-1 hover:bg-black/5\"\n      aria-label=\"Dismiss notification\"\n    >\n      <X className=\"size-4\" />\n    </button>\n  </div>\n)"
+				},
+				{
+					"type": "heading",
+					"text": "Adding Animations"
+				},
+				{
+					"type": "paragraph",
+					"text": "Animations make the toast feel polished. We use the Motion library (Framer Motion) for smooth enter and exit transitions with AnimatePresence."
+				},
+				{
+					"type": "code",
+					"language": "tsx",
+					"filename": "ToastContainer.tsx",
+					"code": "import { AnimatePresence, motion } from 'motion/react'\nimport { useContext, type FC } from 'react'\nimport { Toast } from './Toast'\nimport { ToastContext } from './ToastProvider'\n\nexport const ToastContainer: FC = () => {\n  const context = useContext(ToastContext)\n  if (!context) return null\n\n  return (\n    <div className=\"fixed bottom-4 right-4 z-50 flex flex-col gap-2\">\n      <AnimatePresence mode=\"popLayout\">\n        {context.toasts.map((toast) => (\n          <motion.div\n            key={toast.id}\n            initial={{ opacity: 0, y: 20, scale: 0.95 }}\n            animate={{ opacity: 1, y: 0, scale: 1 }}\n            exit={{ opacity: 0, x: 100 }}\n            transition={{ type: 'spring', stiffness: 500, damping: 30 }}\n          >\n            <Toast toast={toast} onClose={() => context.removeToast(toast.id)} />\n          </motion.div>\n        ))}\n      </AnimatePresence>\n    </div>\n  )\n}"
+				},
+				{
+					"type": "heading",
+					"text": "The Custom Hook"
+				},
+				{
+					"type": "paragraph",
+					"text": "Finally, we create a convenient hook that components can use to show toasts. It throws an error if used outside the provider, catching configuration mistakes early."
+				},
+				{
+					"type": "code",
+					"language": "typescript",
+					"filename": "useToast.ts",
+					"code": "import { useContext } from 'react'\nimport { ToastContext } from './ToastProvider'\n\nexport function useToast() {\n  const context = useContext(ToastContext)\n  if (!context) {\n    throw new Error('useToast must be used within a ToastProvider')\n  }\n  return context\n}\n\n// Usage example:\n// const { addToast } = useToast()\n// addToast({ type: 'success', message: 'Changes saved!' })"
+				},
+				{
+					"type": "quote",
+					"text": "The best components are invisible until you need them, then indispensable.",
+					"author": "Dan Abramov"
+				},
+				{
+					"type": "conclusion",
+					"title": "Conclusion",
+					"text": "Building custom components like toast notifications deepens your understanding of React patterns and accessibility. While libraries save time, the knowledge gained from building your own is invaluable for debugging and extending functionality in production applications. The complete code is available on my GitHub."
+				}
+			]
+		},
+		{
+			"id": "8",
+			"title": "The Designer Who Codes: Why Hybrid Roles Are the Future",
+			"summary": "Exploring how the boundaries between design and development are dissolving, and why professionals who bridge both worlds are increasingly valuable.",
+			"thumbnailUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
+			"heroImageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80",
+			"href": "/blog/8",
+			"category": "Process",
+			"author": "JP Casabianca",
+			"publishedAt": "Jan 28, 2024",
+			"readingTime": "7 min read",
+			"tags": [
+				{ "name": "Design", "color": "brand" },
+				{ "name": "Career", "color": "gray-blue" },
+				{ "name": "Workflow", "color": "orange" }
+			],
+			"content": [
+				{
+					"type": "heading",
+					"text": "The Traditional Divide"
+				},
+				{
+					"type": "paragraph",
+					"text": "For decades, the tech industry maintained a clear separation between designers and developers. Designers created mockups in Photoshop, developers translated them to code, and a handoff process bridged the gap. This division made sense when tools were specialized and skills were siloed."
+				},
+				{
+					"type": "paragraph",
+					"text": "But the landscape has shifted dramatically. Modern design tools like Figma generate production-ready CSS. Component libraries blur the line between design and code. And the rise of design systems means both disciplines now speak a common language of tokens, components, and patterns."
+				},
+				{
+					"type": "heading",
+					"text": "Market Forces Driving Convergence"
+				},
+				{
+					"type": "paragraph",
+					"text": "Startups have always valued versatility, but now even large companies are recognizing the efficiency of hybrid roles. A designer who can prototype in code moves faster than one who waits for developer resources. A developer who understands design principles builds better interfaces without constant review cycles."
+				},
+				{
+					"type": "quote",
+					"text": "The best designers are those who can build, and the best developers are those who understand design. The future belongs to people who do both.",
+					"author": "John Maeda"
+				},
+				{
+					"type": "paragraph",
+					"text": "Job postings increasingly ask for cross-functional skills. Terms like 'design engineer,' 'creative developer,' and 'UX engineer' are no longer rare. Companies have realized that the handoff between design and development is often where quality gets lost."
+				},
+				{
+					"type": "image",
+					"url": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1000&q=80",
+					"caption": "Collaborative teams blur traditional role boundaries"
+				},
+				{
+					"type": "heading",
+					"text": "My Journey Between Both Worlds"
+				},
+				{
+					"type": "paragraph",
+					"text": "I started as a designer, obsessed with typography, color theory, and user psychology. But I kept hitting walls—my designs would ship looking different than I intended, or features I designed were deemed 'too complex to build.' Learning to code was initially about removing these barriers."
+				},
+				{
+					"type": "paragraph",
+					"text": "What I did not expect was how coding would improve my design work. Understanding CSS constraints made me a more practical designer. Knowing React component patterns helped me design more reusable systems. The two skills compound each other."
+				},
+				{
+					"type": "heading",
+					"text": "Skills That Transfer"
+				},
+				{
+					"type": "paragraph",
+					"text": "Both design and development are ultimately about problem-solving with constraints. Designers work within brand guidelines, accessibility requirements, and user expectations. Developers work within technical limitations, performance budgets, and system architectures. The mindset is remarkably similar."
+				},
+				{
+					"type": "paragraph",
+					"text": "Attention to detail, systems thinking, and empathy for users are valued in both disciplines. If you excel at one, you likely have the foundation to excel at the other."
+				},
+				{
+					"type": "heading",
+					"text": "Advice for Building Hybrid Skills"
+				},
+				{
+					"type": "paragraph",
+					"text": "For designers learning to code: Start with CSS and HTML—they are the visual layer and closest to what you already understand. Then learn a component framework like React. You do not need to become a backend engineer; focus on the frontend where design and code intersect."
+				},
+				{
+					"type": "paragraph",
+					"text": "For developers learning design: Study typography and spacing systems—they have the biggest impact on interface quality. Learn to use Figma, not just inspect it. Practice critiquing designs with specific feedback rather than 'it looks off.'"
+				},
+				{
+					"type": "conclusion",
+					"title": "Conclusion",
+					"text": "The designer-developer divide served an earlier era of specialization. Today's tools, workflows, and market demands favor professionals who can work across both domains. You do not need to master both equally—but building bridges between them makes you exponentially more valuable. The T-shaped professional, with depth in one area and breadth across others, is the new ideal."
+				}
+			]
+		},
+		{
+			"id": "9",
+			"title": "Mastering React Server Components: A Practical Guide",
+			"summary": "Demystifying React Server Components with real examples, performance benchmarks, and migration strategies for existing applications.",
+			"thumbnailUrl": "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&q=80",
+			"heroImageUrl": "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=1200&q=80",
+			"href": "/blog/9",
+			"category": "Engineering",
+			"author": "JP Casabianca",
+			"publishedAt": "Jan 22, 2024",
+			"readingTime": "15 min read",
+			"tags": [
+				{ "name": "React", "color": "blue" },
+				{ "name": "Performance", "color": "success" }
+			],
+			"content": [
+				{
+					"type": "heading",
+					"text": "What Are Server Components?"
+				},
+				{
+					"type": "paragraph",
+					"text": "React Server Components (RSC) represent a fundamental shift in how we think about React applications. Unlike traditional React components that run in the browser, Server Components execute on the server and send only the rendered HTML to the client. This means zero JavaScript bundle impact for these components."
+				},
+				{
+					"type": "paragraph",
+					"text": "The key insight is that not all components need interactivity. A product card that displays static information, a navigation menu, or a footer—these do not need to be hydrated on the client. Server Components let us keep them on the server where they belong."
+				},
+				{
+					"type": "heading",
+					"text": "The Mental Model Shift"
+				},
+				{
+					"type": "paragraph",
+					"text": "In traditional React, everything runs on the client. Data fetching happens via useEffect or React Query, and every component adds to the JavaScript bundle. With Server Components, we split our application into two layers."
+				},
+				{
+					"type": "code",
+					"language": "tsx",
+					"filename": "ServerComponent.tsx",
+					"code": "// This runs on the server - no client JS\nasync function ProductList() {\n  // Direct database access - no API needed\n  const products = await db.product.findMany({\n    take: 10,\n    orderBy: { createdAt: 'desc' }\n  })\n\n  return (\n    <ul className=\"grid grid-cols-3 gap-4\">\n      {products.map((product) => (\n        <ProductCard key={product.id} product={product} />\n      ))}\n    </ul>\n  )\n}"
+				},
+				{
+					"type": "heading",
+					"text": "When to Use Server vs Client"
+				},
+				{
+					"type": "paragraph",
+					"text": "The decision is straightforward once you understand the criteria. Use Server Components when you need to fetch data, access backend resources, or render content that does not require interactivity. Use Client Components when you need useState, useEffect, event handlers, or browser APIs."
+				},
+				{
+					"type": "code",
+					"language": "tsx",
+					"filename": "ClientComponent.tsx",
+					"code": "'use client'\n\nimport { useState } from 'react'\n\n// This runs on the client - for interactivity\nexport function AddToCartButton({ productId }: { productId: string }) {\n  const [isLoading, setIsLoading] = useState(false)\n\n  async function handleClick() {\n    setIsLoading(true)\n    await addToCart(productId)\n    setIsLoading(false)\n  }\n\n  return (\n    <button onClick={handleClick} disabled={isLoading}>\n      {isLoading ? 'Adding...' : 'Add to Cart'}\n    </button>\n  )\n}"
+				},
+				{
+					"type": "heading",
+					"text": "Composition Patterns"
+				},
+				{
+					"type": "paragraph",
+					"text": "The power of Server Components comes from composition. Server Components can import and render Client Components, passing server-fetched data as props. This lets you keep the data fetching on the server while the interactivity stays on the client."
+				},
+				{
+					"type": "code",
+					"language": "tsx",
+					"filename": "ProductPage.tsx",
+					"code": "// Server Component\nimport { AddToCartButton } from './AddToCartButton'\n\nasync function ProductPage({ id }: { id: string }) {\n  const product = await db.product.findUnique({ where: { id } })\n\n  return (\n    <article>\n      <h1>{product.name}</h1>\n      <p>{product.description}</p>\n      <span>${product.price}</span>\n      {/* Client Component receives server-fetched data */}\n      <AddToCartButton productId={product.id} />\n    </article>\n  )\n}"
+				},
+				{
+					"type": "image",
+					"url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000&q=80",
+					"caption": "Performance improvements from Server Components"
+				},
+				{
+					"type": "heading",
+					"text": "Performance Wins"
+				},
+				{
+					"type": "paragraph",
+					"text": "In my testing, migrating a dashboard from fully client-rendered to a Server Component architecture reduced the JavaScript bundle by 40%. Time to Interactive improved from 3.2 seconds to 1.8 seconds. These are not theoretical gains—they directly impact user experience and Core Web Vitals."
+				},
+				{
+					"type": "paragraph",
+					"text": "The biggest wins come from moving data fetching to the server. No more loading spinners while waiting for API calls. No more waterfalls of requests. The server fetches everything in parallel and streams the HTML as it is ready."
+				},
+				{
+					"type": "heading",
+					"text": "Migration Strategy"
+				},
+				{
+					"type": "paragraph",
+					"text": "You do not need to rewrite your entire application. Start by identifying components that are purely presentational—they display data but have no interactivity. Convert these to Server Components first. Keep interactive components as Client Components, and gradually move data fetching from client to server."
+				},
+				{
+					"type": "quote",
+					"text": "The best code is no code at all. Server Components let us send less JavaScript to the browser by keeping it on the server where it belongs.",
+					"author": "Dan Abramov"
+				},
+				{
+					"type": "conclusion",
+					"title": "Conclusion",
+					"text": "React Server Components are not just an optimization—they are a new paradigm for building React applications. By understanding when to use Server versus Client Components, you can build applications that are both faster and simpler. Start small, measure the impact, and gradually expand your use of this powerful pattern."
+				}
+			]
+		},
+		{
+			"id": "10",
+			"title": "Redesigning a Legacy Dashboard: A 40% Performance Improvement",
+			"summary": "How I approached modernizing a 5-year-old React dashboard, the technical and design decisions made, and measurable outcomes achieved.",
+			"thumbnailUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+			"heroImageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+			"href": "/blog/10",
+			"category": "Design",
+			"author": "JP Casabianca",
+			"publishedAt": "Jan 18, 2024",
+			"readingTime": "10 min read",
+			"tags": [
+				{ "name": "Case Study", "color": "brand" },
+				{ "name": "React", "color": "blue" },
+				{ "name": "UX", "color": "indigo" }
+			],
+			"content": [
+				{
+					"type": "heading",
+					"text": "The Challenge"
+				},
+				{
+					"type": "paragraph",
+					"text": "The dashboard was built in 2019 using class components, Redux for everything, and a custom UI library that nobody maintained anymore. Users complained about slow load times, confusing navigation, and a mobile experience that was essentially broken. The team had been afraid to touch it because every change seemed to break something else."
+				},
+				{
+					"type": "paragraph",
+					"text": "My mandate was clear but daunting: modernize the codebase, improve performance, and redesign the user experience—without disrupting the 50,000 active users who depended on it daily."
+				},
+				{
+					"type": "heading",
+					"text": "Discovery and Audit"
+				},
+				{
+					"type": "paragraph",
+					"text": "Before writing any code, I spent two weeks understanding the existing system. I interviewed users, analyzed analytics, and mapped every component and data flow. The audit revealed three critical issues: the JavaScript bundle was 2.4MB, there were 47 different button styles, and data fetching happened in componentDidMount with no caching."
+				},
+				{
+					"type": "image",
+					"url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000&q=80",
+					"caption": "Mapping the existing dashboard architecture"
+				},
+				{
+					"type": "heading",
+					"text": "The Technical Approach"
+				},
+				{
+					"type": "paragraph",
+					"text": "I chose an incremental migration strategy. Rather than a risky big-bang rewrite, we would modernize piece by piece while maintaining backwards compatibility. The new code would use functional components, React Query for data fetching, and a new design system built on Tailwind CSS."
+				},
+				{
+					"type": "code",
+					"language": "tsx",
+					"filename": "Before: ClassComponent.tsx",
+					"code": "// Before: Class component with Redux\nclass DataTable extends Component {\n  componentDidMount() {\n    this.props.fetchData(this.props.filters)\n  }\n\n  componentDidUpdate(prevProps) {\n    if (prevProps.filters !== this.props.filters) {\n      this.props.fetchData(this.props.filters)\n    }\n  }\n\n  render() {\n    if (this.props.loading) return <Spinner />\n    return <Table data={this.props.data} />\n  }\n}\n\nexport default connect(mapStateToProps, { fetchData })(DataTable)"
+				},
+				{
+					"type": "code",
+					"language": "tsx",
+					"filename": "After: FunctionalComponent.tsx",
+					"code": "// After: Functional component with React Query\nfunction DataTable({ filters }: { filters: Filters }) {\n  const { data, isLoading } = useQuery({\n    queryKey: ['tableData', filters],\n    queryFn: () => fetchTableData(filters),\n    staleTime: 5 * 60 * 1000, // Cache for 5 minutes\n  })\n\n  if (isLoading) return <Skeleton className=\"h-64\" />\n  return <Table data={data} />\n}"
+				},
+				{
+					"type": "heading",
+					"text": "Design System Implementation"
+				},
+				{
+					"type": "paragraph",
+					"text": "The 47 button styles were symptoms of a deeper problem: no design system. I audited every component, consolidated duplicates, and created a token-based design system. Colors, spacing, typography, and component APIs were all standardized. This alone reduced the CSS bundle by 60%."
+				},
+				{
+					"type": "paragraph",
+					"text": "The new system was documented in Storybook, making it easy for the team to find and use the right components. We also added visual regression testing to catch unintended style changes."
+				},
+				{
+					"type": "heading",
+					"text": "Results and Metrics"
+				},
+				{
+					"type": "paragraph",
+					"text": "After six months of incremental work, the results exceeded expectations. The JavaScript bundle dropped from 2.4MB to 890KB. Time to Interactive improved from 4.2 seconds to 1.8 seconds—a 57% improvement. The Lighthouse performance score went from 34 to 78."
+				},
+				{
+					"type": "quote",
+					"text": "The dashboard feels like a completely different product. I actually enjoy using it now.",
+					"author": "Beta Tester Feedback"
+				},
+				{
+					"type": "paragraph",
+					"text": "User satisfaction scores increased by 34%. Support tickets related to 'slow loading' dropped by 71%. And the mobile experience, previously unusable, now had a 4.2 star rating in our feedback surveys."
+				},
+				{
+					"type": "conclusion",
+					"title": "Lessons Learned",
+					"text": "Legacy code is not a death sentence—it is an opportunity. The key is approaching modernization incrementally, measuring everything, and never losing sight of user needs. The technical debt we pay down today becomes the foundation for features we build tomorrow. Sometimes the best thing you can do for a product is not add new features, but make the existing ones work better."
+				}
+			]
+		},
+		{
+			"id": "11",
+			"title": "Creating Accessible Form Components with React Aria",
+			"summary": "Building production-ready form inputs, selects, and date pickers using React Aria for bulletproof accessibility.",
+			"thumbnailUrl": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80",
+			"heroImageUrl": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1200&q=80",
+			"href": "/blog/11",
+			"category": "Engineering",
+			"author": "JP Casabianca",
+			"publishedAt": "Jan 12, 2024",
+			"readingTime": "14 min read",
+			"tags": [
+				{ "name": "React", "color": "blue" },
+				{ "name": "Accessibility", "color": "indigo" },
+				{ "name": "Components", "color": "pink" }
+			],
+			"content": [
+				{
+					"type": "heading",
+					"text": "Why React Aria?"
+				},
+				{
+					"type": "paragraph",
+					"text": "Accessibility is not optional—it is a legal requirement in many jurisdictions and an ethical imperative everywhere. But implementing ARIA correctly is hard. Keyboard navigation, focus management, screen reader announcements—the edge cases are endless. React Aria handles this complexity so you can focus on building great experiences."
+				},
+				{
+					"type": "paragraph",
+					"text": "React Aria is Adobe's accessibility-first component library. Unlike UI libraries that bolt accessibility on afterward, React Aria was built from the ground up with assistive technology in mind. It provides hooks that handle all the ARIA attributes, keyboard interactions, and focus management."
+				},
+				{
+					"type": "heading",
+					"text": "Building an Accessible Input"
+				},
+				{
+					"type": "paragraph",
+					"text": "Let us start with a seemingly simple component: a text input with a label and error message. The accessibility requirements include proper label association, error announcements, and focus indication."
+				},
+				{
+					"type": "code",
+					"language": "tsx",
+					"filename": "TextField.tsx",
+					"code": "import { useTextField } from 'react-aria'\nimport { useRef, type FC } from 'react'\n\ninterface TextFieldProps {\n  label: string\n  value: string\n  onChange: (value: string) => void\n  errorMessage?: string\n  description?: string\n}\n\nexport const TextField: FC<TextFieldProps> = (props) => {\n  const ref = useRef<HTMLInputElement>(null)\n  const { labelProps, inputProps, errorMessageProps, descriptionProps } = useTextField(\n    {\n      ...props,\n      isInvalid: !!props.errorMessage,\n    },\n    ref\n  )\n\n  return (\n    <div className=\"flex flex-col gap-1.5\">\n      <label {...labelProps} className=\"text-sm font-medium text-primary\">\n        {props.label}\n      </label>\n      <input\n        {...inputProps}\n        ref={ref}\n        className=\"rounded-lg border border-secondary px-3 py-2 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20\"\n      />\n      {props.description && (\n        <p {...descriptionProps} className=\"text-sm text-secondary\">\n          {props.description}\n        </p>\n      )}\n      {props.errorMessage && (\n        <p {...errorMessageProps} className=\"text-sm text-error-600\">\n          {props.errorMessage}\n        </p>\n      )}\n    </div>\n  )\n}"
+				},
+				{
+					"type": "paragraph",
+					"text": "The useTextField hook automatically generates unique IDs, associates the label with the input, and connects the error message via aria-describedby. Screen readers announce the error when the field is focused."
+				},
+				{
+					"type": "heading",
+					"text": "Building an Accessible Select"
+				},
+				{
+					"type": "paragraph",
+					"text": "Custom selects are notoriously difficult to make accessible. Native selects are limited in styling, but custom implementations often break keyboard navigation. React Aria's useSelect hook gives us the best of both worlds."
+				},
+				{
+					"type": "code",
+					"language": "tsx",
+					"filename": "Select.tsx",
+					"code": "import { useButton, useSelect, useSelectState, Item } from 'react-aria'\nimport { useSelectState as useSelectStateStately } from 'react-stately'\nimport { ChevronDown } from '@untitledui/icons'\n\nexport function Select({ label, items, selectedKey, onSelectionChange }) {\n  const state = useSelectStateStately({ \n    items, \n    selectedKey, \n    onSelectionChange \n  })\n  \n  const ref = useRef(null)\n  const { triggerProps, valueProps, menuProps } = useSelect(\n    { label, items },\n    state,\n    ref\n  )\n\n  return (\n    <div className=\"relative\">\n      <label className=\"text-sm font-medium text-primary\">{label}</label>\n      <button\n        {...triggerProps}\n        ref={ref}\n        className=\"flex w-full items-center justify-between rounded-lg border px-3 py-2\"\n      >\n        <span {...valueProps}>\n          {state.selectedItem?.rendered ?? 'Select an option'}\n        </span>\n        <ChevronDown className=\"size-4\" />\n      </button>\n      {state.isOpen && (\n        <ul {...menuProps} className=\"absolute mt-1 w-full rounded-lg border bg-primary shadow-lg\">\n          {[...state.collection].map((item) => (\n            <SelectOption key={item.key} item={item} state={state} />\n          ))}\n        </ul>\n      )}\n    </div>\n  )\n}"
+				},
+				{
+					"type": "heading",
+					"text": "Keyboard Navigation"
+				},
+				{
+					"type": "paragraph",
+					"text": "React Aria handles complex keyboard interactions automatically. Arrow keys navigate options, Enter selects, Escape closes, and type-ahead lets users jump to options by typing. These are not simple to implement correctly, but they are essential for accessibility."
+				},
+				{
+					"type": "quote",
+					"text": "Accessibility is not a feature. It is a social trend. It is about building products that are inclusive by default.",
+					"author": "Microsoft Inclusive Design"
+				},
+				{
+					"type": "heading",
+					"text": "Testing Your Components"
+				},
+				{
+					"type": "paragraph",
+					"text": "Building accessible components is only half the battle—you need to verify they work. Use the axe DevTools browser extension for automated checks. Test with VoiceOver (Mac) or NVDA (Windows) to experience what screen reader users experience. And always test keyboard-only navigation."
+				},
+				{
+					"type": "code",
+					"language": "typescript",
+					"filename": "TextField.test.tsx",
+					"code": "import { render, screen } from '@testing-library/react'\nimport { axe, toHaveNoViolations } from 'jest-axe'\nimport { TextField } from './TextField'\n\nexpect.extend(toHaveNoViolations)\n\ntest('has no accessibility violations', async () => {\n  const { container } = render(\n    <TextField\n      label=\"Email\"\n      value=\"\"\n      onChange={() => {}}\n    />\n  )\n  \n  const results = await axe(container)\n  expect(results).toHaveNoViolations()\n})\n\ntest('associates label with input', () => {\n  render(<TextField label=\"Email\" value=\"\" onChange={() => {}} />)\n  \n  const input = screen.getByLabelText('Email')\n  expect(input).toBeInTheDocument()\n})"
+				},
+				{
+					"type": "conclusion",
+					"title": "Conclusion",
+					"text": "React Aria abstracts away the complexity of building accessible components while giving you full control over styling. The investment in learning it pays dividends—your components will work for everyone, pass accessibility audits, and provide a better experience for all users. Start with simple components like TextField, then tackle more complex ones like Select and DatePicker as you grow confident with the patterns."
+				}
+			]
+		},
+		{
+			"id": "12",
+			"title": "Why I Stopped Using Component Libraries (And Started Building My Own)",
+			"summary": "The case for investing in custom component libraries, when off-the-shelf solutions fall short, and how to make the business case for this investment.",
+			"thumbnailUrl": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&q=80",
+			"heroImageUrl": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&q=80",
+			"href": "/blog/12",
+			"category": "Process",
+			"author": "JP Casabianca",
+			"publishedAt": "Jan 8, 2024",
+			"readingTime": "8 min read",
+			"tags": [
+				{ "name": "Design Systems", "color": "brand" },
+				{ "name": "Development", "color": "success" },
+				{ "name": "UI", "color": "pink" }
+			],
+			"content": [
+				{
+					"type": "heading",
+					"text": "The Allure of Ready-Made Components"
+				},
+				{
+					"type": "paragraph",
+					"text": "When starting a new project, reaching for Material UI, Chakra, or Ant Design is tempting. They offer dozens of polished components, handle accessibility, and let you build UIs quickly. I have used them all, and they are genuinely excellent libraries."
+				},
+				{
+					"type": "paragraph",
+					"text": "But over time, I noticed a pattern. Every project eventually needed customizations the library did not support well. We would override styles, wrap components to change behavior, and fight against defaults. The time saved initially was spent later on workarounds."
+				},
+				{
+					"type": "heading",
+					"text": "Where Off-the-Shelf Falls Short"
+				},
+				{
+					"type": "paragraph",
+					"text": "The fundamental tension is that component libraries must serve everyone, but your product needs to serve your users. Generic solutions optimize for breadth; custom solutions optimize for depth. When your brand, your users, and your use cases are specific, generic components become constraints."
+				},
+				{
+					"type": "quote",
+					"text": "The problem with using someone else's design system is that you are also using someone else's design decisions.",
+					"author": "Brad Frost"
+				},
+				{
+					"type": "paragraph",
+					"text": "I remember spending three days trying to customize a data table component to match our designs. The library's API did not expose what I needed, so I ended up forking the component and maintaining my own version. At that point, the library was hurting more than helping."
+				},
+				{
+					"type": "heading",
+					"text": "The Hidden Costs of Customization"
+				},
+				{
+					"type": "paragraph",
+					"text": "Every CSS override is technical debt. Every wrapper component adds complexity. Every workaround makes upgrades harder. These costs are invisible at first but compound over time. When the library releases a new version, you discover all the ways your customizations were fragile."
+				},
+				{
+					"type": "paragraph",
+					"text": "Bundle size is another hidden cost. Component libraries include code for features you do not use. Tree-shaking helps, but you are still downloading styling logic, theming systems, and dependencies that your custom components would not need."
+				},
+				{
+					"type": "image",
+					"url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1000&q=80",
+					"caption": "Building your own gives you complete control"
+				},
+				{
+					"type": "heading",
+					"text": "Building vs Buying: A Framework"
+				},
+				{
+					"type": "paragraph",
+					"text": "Not every project needs a custom component library. For MVPs, prototypes, and internal tools where consistency matters less, off-the-shelf is fine. But for products where brand and user experience are competitive advantages, custom components are worth the investment."
+				},
+				{
+					"type": "paragraph",
+					"text": "Ask yourself: Will we spend more time customizing the library than building our own components? Are our design requirements unusual enough that generic components will always feel wrong? Is our product's UI a key differentiator?"
+				},
+				{
+					"type": "heading",
+					"text": "Making It Sustainable"
+				},
+				{
+					"type": "paragraph",
+					"text": "The secret to sustainable custom components is not building everything from scratch—it is choosing the right foundation. I use React Aria for accessibility, Tailwind for styling, and build only the UI layer myself. This gives me full control over appearance and behavior while delegating the hard parts."
+				},
+				{
+					"type": "paragraph",
+					"text": "Documentation is crucial. Every component needs examples, API documentation, and guidance on when to use it. Storybook makes this easier, but the writing still takes discipline. Without documentation, your component library becomes another form of technical debt."
+				},
+				{
+					"type": "conclusion",
+					"title": "Conclusion",
+					"text": "Component libraries are not bad—they are tools with trade-offs. For some projects, the speed they provide outweighs the customization constraints. But when your product demands a distinctive, polished interface, building your own components is an investment that pays compounding returns. Start small, document everything, and build on solid foundations like React Aria for accessibility."
+				}
+			]
+		},
+		{
+			"id": "13",
+			"title": "From Figma to Production in 48 Hours: A Startup Sprint Story",
+			"summary": "A behind-the-scenes look at rapidly prototyping and shipping a landing page for a startup launch, balancing speed with quality.",
+			"thumbnailUrl": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80",
+			"heroImageUrl": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&q=80",
+			"href": "/blog/13",
+			"category": "Process",
+			"author": "JP Casabianca",
+			"publishedAt": "Jan 3, 2024",
+			"readingTime": "6 min read",
+			"tags": [
+				{ "name": "Figma", "color": "purple" },
+				{ "name": "Startup", "color": "orange" },
+				{ "name": "Workflow", "color": "orange" }
+			],
+			"content": [
+				{
+					"type": "heading",
+					"text": "The Brief"
+				},
+				{
+					"type": "paragraph",
+					"text": "Friday afternoon, 3 PM. The founders had just secured a meeting with investors for Monday morning. They needed a landing page that would make their AI product look established, trustworthy, and ready for prime time. I had 48 hours to design and ship something compelling."
+				},
+				{
+					"type": "paragraph",
+					"text": "This was not my first sprint, but the stakes felt higher than usual. The page needed to look like it came from a well-funded company, not a weekend project. Time to work smart, not just fast."
+				},
+				{
+					"type": "heading",
+					"text": "Hour 0-4: Rapid Design in Figma"
+				},
+				{
+					"type": "paragraph",
+					"text": "I skipped the usual discovery phase—there was no time. Instead, I spent the first hour collecting references: landing pages I admired, competitors, and design patterns that work for AI products. Inspiration first, execution second."
+				},
+				{
+					"type": "paragraph",
+					"text": "Then I designed mobile-first, which forced constraint-driven decisions. If it works on mobile, it scales up. I used my existing component library in Figma, swapping colors and adjusting typography to match the brand. By hour four, I had three sections complete: hero, features, and social proof."
+				},
+				{
+					"type": "image",
+					"url": "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=1000&q=80",
+					"caption": "The Figma design at the 4-hour mark"
+				},
+				{
+					"type": "heading",
+					"text": "Hour 4-12: Design to Code"
+				},
+				{
+					"type": "paragraph",
+					"text": "I shipped the Figma to the founders for feedback while starting development. Using Vite with React and Tailwind meant zero configuration time. I had a dev server running in under a minute."
+				},
+				{
+					"type": "code",
+					"language": "tsx",
+					"filename": "Hero.tsx",
+					"code": "export function Hero() {\n  return (\n    <section className=\"relative overflow-hidden bg-gray-950 px-4 py-24 md:py-32\">\n      <div className=\"mx-auto max-w-4xl text-center\">\n        <Badge>Now in Beta</Badge>\n        <h1 className=\"mt-6 text-4xl font-bold text-white md:text-6xl\">\n          AI that understands your business\n        </h1>\n        <p className=\"mt-6 text-lg text-gray-400 md:text-xl\">\n          Transform your data into actionable insights in minutes, not months.\n        </p>\n        <div className=\"mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center\">\n          <Button size=\"lg\">Start Free Trial</Button>\n          <Button size=\"lg\" variant=\"outline\">Watch Demo</Button>\n        </div>\n      </div>\n      <GradientBlur />\n    </section>\n  )\n}"
+				},
+				{
+					"type": "paragraph",
+					"text": "Component reuse was essential. The Button, Badge, and Card components from my library worked immediately. I only had to build the custom gradient backgrounds and the testimonial carousel."
+				},
+				{
+					"type": "heading",
+					"text": "Hour 12-24: Polish and Feedback"
+				},
+				{
+					"type": "paragraph",
+					"text": "The founders loved the direction but wanted changes: different testimonials, a pricing section, and animated gradients. I built while they slept, shipping incremental updates to a preview URL they could check in the morning."
+				},
+				{
+					"type": "paragraph",
+					"text": "I added Motion for subtle animations—fade-ins on scroll, a floating badge, animated gradient backgrounds. These small touches make the difference between 'nice' and 'premium' feel."
+				},
+				{
+					"type": "heading",
+					"text": "Hour 24-48: Optimization and Launch"
+				},
+				{
+					"type": "paragraph",
+					"text": "The second day was about optimization and edge cases. I compressed images, added proper meta tags for sharing, tested on multiple browsers, and fixed responsive issues. The Lighthouse score went from 72 to 96."
+				},
+				{
+					"type": "paragraph",
+					"text": "Deployment was simple: push to GitHub, connect to Vercel, done. By Sunday evening, the page was live, fast, and ready for Monday's investor meeting."
+				},
+				{
+					"type": "quote",
+					"text": "Constraints breed creativity. The best work often happens when you have no time for perfection.",
+					"author": "Personal Reflection"
+				},
+				{
+					"type": "conclusion",
+					"title": "Lessons Learned",
+					"text": "This sprint reinforced lessons I keep relearning: invest in reusable components before you need them, design constraints force better decisions, and 'good enough now' beats 'perfect later.' The founders closed their seed round two weeks later. Sometimes, 48 hours is all you need."
+				}
+			]
+		},
+		{
+			"id": "14",
+			"title": "Animating with Motion: Micro-interactions That Delight",
+			"summary": "A practical guide to adding meaningful animations to React components using Motion (Framer Motion), with performance best practices.",
+			"thumbnailUrl": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80",
+			"heroImageUrl": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200&q=80",
+			"href": "/blog/14",
+			"category": "Engineering",
+			"author": "JP Casabianca",
+			"publishedAt": "Dec 28, 2023",
+			"readingTime": "11 min read",
+			"tags": [
+				{ "name": "React", "color": "blue" },
+				{ "name": "Animation", "color": "pink" },
+				{ "name": "UX", "color": "indigo" }
+			],
+			"content": [
+				{
+					"type": "heading",
+					"text": "Why Micro-interactions Matter"
+				},
+				{
+					"type": "paragraph",
+					"text": "Animation is not decoration—it is communication. When a button subtly scales on hover, it confirms the interface is responsive. When a modal fades in rather than appearing instantly, it gives users time to process the context switch. These micro-interactions make digital interfaces feel alive and intuitive."
+				},
+				{
+					"type": "paragraph",
+					"text": "Motion (formerly Framer Motion) is my go-to library for React animations. It strikes the perfect balance between power and simplicity, letting you add sophisticated animations with minimal code while providing escape hatches for complex scenarios."
+				},
+				{
+					"type": "heading",
+					"text": "Motion Fundamentals"
+				},
+				{
+					"type": "paragraph",
+					"text": "At its core, Motion replaces HTML elements with animated versions. The motion.div component accepts special props like initial, animate, and exit that define animation states."
+				},
+				{
+					"type": "code",
+					"language": "tsx",
+					"filename": "FadeIn.tsx",
+					"code": "import { motion } from 'motion/react'\n\nexport function FadeIn({ children }: { children: React.ReactNode }) {\n  return (\n    <motion.div\n      initial={{ opacity: 0, y: 20 }}\n      animate={{ opacity: 1, y: 0 }}\n      transition={{ duration: 0.4, ease: 'easeOut' }}\n    >\n      {children}\n    </motion.div>\n  )\n}"
+				},
+				{
+					"type": "heading",
+					"text": "Staggered List Animations"
+				},
+				{
+					"type": "paragraph",
+					"text": "One of the most delightful patterns is staggering animations across a list. Each item animates in sequence, creating a wave effect that guides the eye and feels organic."
+				},
+				{
+					"type": "code",
+					"language": "tsx",
+					"filename": "StaggeredList.tsx",
+					"code": "import { motion } from 'motion/react'\n\nconst container = {\n  hidden: { opacity: 0 },\n  show: {\n    opacity: 1,\n    transition: {\n      staggerChildren: 0.1,\n    },\n  },\n}\n\nconst item = {\n  hidden: { opacity: 0, y: 20 },\n  show: { opacity: 1, y: 0 },\n}\n\nexport function StaggeredList({ items }: { items: string[] }) {\n  return (\n    <motion.ul\n      variants={container}\n      initial=\"hidden\"\n      animate=\"show\"\n      className=\"space-y-4\"\n    >\n      {items.map((text) => (\n        <motion.li key={text} variants={item} className=\"rounded-lg bg-secondary p-4\">\n          {text}\n        </motion.li>\n      ))}\n    </motion.ul>\n  )\n}"
+				},
+				{
+					"type": "heading",
+					"text": "Page Transitions"
+				},
+				{
+					"type": "paragraph",
+					"text": "Page transitions in single-page applications create continuity between views. AnimatePresence detects when components unmount and lets them animate out before removal."
+				},
+				{
+					"type": "code",
+					"language": "tsx",
+					"filename": "PageTransition.tsx",
+					"code": "import { AnimatePresence, motion } from 'motion/react'\nimport { useLocation } from 'react-router'\n\nexport function PageTransition({ children }: { children: React.ReactNode }) {\n  const location = useLocation()\n\n  return (\n    <AnimatePresence mode=\"wait\">\n      <motion.main\n        key={location.pathname}\n        initial={{ opacity: 0, x: 20 }}\n        animate={{ opacity: 1, x: 0 }}\n        exit={{ opacity: 0, x: -20 }}\n        transition={{ duration: 0.3 }}\n      >\n        {children}\n      </motion.main>\n    </AnimatePresence>\n  )\n}"
+				},
+				{
+					"type": "image",
+					"url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1000&q=80",
+					"caption": "Thoughtful animations enhance user experience"
+				},
+				{
+					"type": "heading",
+					"text": "Gesture-Based Interactions"
+				},
+				{
+					"type": "paragraph",
+					"text": "Motion shines with gesture-based animations. The whileHover and whileTap props make interactive elements feel tangible without writing event handlers."
+				},
+				{
+					"type": "code",
+					"language": "tsx",
+					"filename": "InteractiveCard.tsx",
+					"code": "import { motion } from 'motion/react'\n\nexport function InteractiveCard({ children }: { children: React.ReactNode }) {\n  return (\n    <motion.div\n      className=\"rounded-xl bg-secondary p-6 cursor-pointer\"\n      whileHover={{ scale: 1.02, boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}\n      whileTap={{ scale: 0.98 }}\n      transition={{ type: 'spring', stiffness: 400, damping: 17 }}\n    >\n      {children}\n    </motion.div>\n  )\n}"
+				},
+				{
+					"type": "heading",
+					"text": "Performance Considerations"
+				},
+				{
+					"type": "paragraph",
+					"text": "Not all CSS properties animate equally. Transform and opacity are GPU-accelerated and smooth at 60fps. Properties like width, height, and margin trigger layout recalculations and can cause jank. Always animate transform (scale, translate, rotate) when possible."
+				},
+				{
+					"type": "quote",
+					"text": "The best animations are the ones users do not consciously notice—they just make the interface feel right.",
+					"author": "Sarah Drasner"
+				},
+				{
+					"type": "heading",
+					"text": "Respecting User Preferences"
+				},
+				{
+					"type": "paragraph",
+					"text": "Some users experience motion sickness from animations. The prefers-reduced-motion media query lets us respect their preferences. Motion provides a useReducedMotion hook for this purpose."
+				},
+				{
+					"type": "code",
+					"language": "tsx",
+					"filename": "AccessibleAnimation.tsx",
+					"code": "import { motion, useReducedMotion } from 'motion/react'\n\nexport function AccessibleFadeIn({ children }: { children: React.ReactNode }) {\n  const shouldReduceMotion = useReducedMotion()\n\n  return (\n    <motion.div\n      initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}\n      animate={{ opacity: 1, y: 0 }}\n      transition={{ duration: shouldReduceMotion ? 0 : 0.4 }}\n    >\n      {children}\n    </motion.div>\n  )\n}"
+				},
+				{
+					"type": "conclusion",
+					"title": "Conclusion",
+					"text": "Micro-interactions transform static interfaces into living experiences. Motion makes adding these details simple while maintaining performance. Start with subtle animations—fade-ins, hover states, loading indicators—then build toward more complex sequences as you gain confidence. Remember: the goal is not to impress with animation, but to make the interface feel natural and responsive."
+				}
+			]
 		}
 	]
 }
